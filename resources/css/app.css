@@ -1,0 +1,186 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+
+.hero-carousel .carousel-item { 
+  height: 100%;
+  width: 100%;
+}
+
+.hero-carousel .row {
+  height: 100%;
+  margin: 0;
+}
+
+.hero-carousel .left-content {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1rem;
+}
+
+.hero-carousel .left-content h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hero-carousel .left-content p {
+  font-size: 20px;
+  justify-content: left;
+}
+
+.hero-carousel .left-content .btn-purple {
+  background-color: #a100ff;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 0.5rem 1.5rem;
+  margin-top: 1rem;
+  width: fit-content;
+}
+
+.hero-carousel .right-image {
+  height: 100%;
+  padding: 0;
+}
+
+.hero-carousel .right-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+/*Buttoms carousel*/
+.carousel-control-prev, .carousel-control-next {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  width: 20px;
+  height: 20px;
+  background-color: #a100ff;
+}
+.carousel-indicators [data-bs-target] {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #bbb;
+  margin: 0 4px;
+  transition: background-color 0.6s ease;
+}
+
+.carousel-indicators .active {
+  background-color: #a100ff;
+}
+.carousel-indicators [data-bs-target]:hover {
+  background-color: #a100ff; 
+}  
+
+/* Tarjetas de obras */
+.obra-card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Filtros y noticias */
+.filtros .noticias {
+  background-color: #313e4b;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+
+@media screen and (max-width: 1160px)  {
+.hero-carousel {
+  display: flex;
+  flex-direction: column;
+  min-height: 600px;
+}
+
+.hero-carousel .left-content {
+  width: 100%;
+  padding: 1rem;
+}
+.hero-carousel .right-image {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.hero-carousel .right-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.hero-carousel .carousel-item {
+  height: 100%;
+  width: 100%;
+}
+.hero-carousel .row {
+  height: 100%;
+  margin: 0;
+}
+.hero-carousel .left-content {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1rem;
+}
+.hero-carousel .left-content h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.hero-carousel .left-content p {
+  font-size: 16px;
+  justify-content: left;
+}
+.hero-carousel .left-content .btn-purple {
+  background-color: #a100ff;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 0.5rem 1.5rem;
+  margin-top: 1rem;
+  width: fit-content;
+}
+}
+
+@media screen and (max-width: 768px) {
+  #heroSlider {
+    max-height: 500px; /* Ajusta a lo que te guste */
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero-carousel .carousel-item {
+    height: auto; /* Ya no height: 100% forzado */
+  }
+
+  .hero-carousel .right-image img {
+    height: auto;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+  }
+}
+
+

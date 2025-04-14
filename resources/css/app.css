@@ -1,6 +1,6 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
-
+/**/
 .hero-carousel .carousel-item { 
   height: 100%;
   width: 100%;
@@ -12,13 +12,28 @@
 }
 
 .hero-carousel .left-content {
-  background-color: black;
-  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  padding: 1rem;
+  align-items: center;
+  padding: 5rem;
+  transition: background-color 0.5s ease;
+}
+
+/*Backgorund del slide activo*/
+.slide1{
+  background-color: rgb(165, 105, 27);
+  color: black;
+}
+
+.slide2{
+  background-color: rgb(94, 201, 22);
+  color: black;
+}
+
+.slide3{
+  background-color: rgb(18, 221, 221);
+  color: black;
 }
 
 .hero-carousel .left-content h1 {
@@ -53,6 +68,7 @@
 }
 /*Buttoms carousel*/
 .carousel-control-prev, .carousel-control-next {
+  margin: 0px 10px 0 10px;
   top: 50%;
   transform: translateY(-50%);
   width: 45px;
@@ -65,10 +81,19 @@
   justify-content: center;
 }
 
+.carousel-control-prev:hover, .carousel-control-next:hover {
+  background-color: rgb(218, 214, 214);
+}
 .carousel-control-prev-icon, .carousel-control-next-icon {
   width: 20px;
   height: 20px;
-  background-color: #a100ff;
+  background-size: 100%, 100%;
+}
+.carousel-control-prev-icon {
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3E%3Cpath fill="currentColor" d="M11.742 1.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.854.354l-6-6a.5.5 0 0 1 0-.708l6-6A.5.5 0 0 1 11.742 1.5z"/%3E%3C/svg%3E');
+}
+.carousel-control-next-icon {
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3E%3Cpath fill="currentColor" d="M4.258 1.5a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .854.354l6-6a.5.5 0 0 0 0-.708l-6-6A.5.5 0 0 0 4.258 1.5z"/%3E%3C/svg%3E');
 }
 .carousel-indicators [data-bs-target] {
   width: 12px;
@@ -133,13 +158,26 @@
   margin: 0;
 }
 .hero-carousel .left-content {
-  background-color: black;
-  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   padding: 1rem;
+}
+/*Backgorund del slide activo*/
+.slide1{
+  background-color: rgb(165, 105, 27);
+  color: black;
+}
+
+.slide2{
+  background-color: rgb(94, 201, 22);
+  color: black;
+}
+
+.slide3{
+  background-color: rgb(18, 221, 221);
+  color: black;
 }
 .hero-carousel .left-content h1 {
   font-size: 2rem;
@@ -162,7 +200,7 @@
 
 @media screen and (max-width: 768px) {
   #heroSlider {
-    max-height: 500px; /* Ajusta a lo que te guste */
+    max-height: 800px;
     overflow: hidden;
     position: relative;
   }
@@ -182,5 +220,3 @@
     bottom: 10px;
   }
 }
-
-

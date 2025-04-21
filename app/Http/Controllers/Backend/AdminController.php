@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -16,9 +17,10 @@ class AdminController extends Controller{
         return view('admin.login');
     }
 
-    public function logear(Request $request){
+    public function logear(LoginRequest $request){
         $email = $request->input('email');
         $password = $request->input('password');
+
 
         if(Auth::attempt([
             'email'=> $email,
@@ -28,7 +30,9 @@ class AdminController extends Controller{
         };
 
         //Si el usuario no se pudo logear
-        return redirect()->route('admin.login');
+        return redirect()->route('admin.login')->withErrors([
+            'login' => 'Usuario y/o contraseña invalidos'
+        ]);
     }
 
     public function logout(){

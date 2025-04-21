@@ -32,14 +32,15 @@
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">Bienvenido a Galeria de arte Enmanuel</h1>
                                 </div>
                                 @include('_includes/Modules')
-                                <form class="user" action="{{action([App\Http\Controllers\Backend\AdminController::class,'logear'])}}" method="post">
+                                <form class="user" action="{{action([\App\Http\Controllers\Login\LoginController::class,'login'])}}" method="POST">
                                     @csrf
                                     <div class="form-group">
                                         <input name="email" type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." autocomplete="off">
-                                        <div data-lastpass-icon-root="" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
+                                        <div data-lastpass-icon-root="" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div>
+                                    </div>
                                     <div class="form-group">
                                         <input name="password" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" autocomplete="off">
                                         <div data-lastpass-icon-root="" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>

@@ -27,10 +27,35 @@
           </ul>
         </div>
         <!-- Login/Register -->
-        <div class="d-flex">
-            <a href="{{route('admin.login')}}" class="btn btn-outline-light me-2">Login</a>
-            <a href="#" class="btn btn-light">Registro</a>
-        </div>
+          <div class="d-flex">
+              @guest
+                  <li class="nav-item">
+                      <a class="btn btn-outline-light mr-2" href="{{ route('login') }}">Login</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="btn btn-light" href="{{ route('register') }}">Registro</a>
+                  </li>
+              @endguest
+
+                  @auth
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              {{ Auth::user()->name }}
+                          </a>
+                          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                              <li>
+                                  <a class="dropdown-item" href="#">Ver perfil</a>
+                              </li>
+                              <li>
+                                  <form action="{{ route('logout') }}" method="POST">
+                                      @csrf
+                                      <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                                  </form>
+                              </li>
+                          </ul>
+                      </li>
+                  @endauth
+          </div>
       </div>
     </nav>
   </header>
@@ -95,7 +120,7 @@
   </div>
 
   <main class="container my-5 flex-grow-1">
-      @include('_includes/galeryArt')
+      @include('galery/galeryArt')
   </main>
   <!-- FOOTER -->
   <footer class="bg-dark text-white py-3 mt-auto text-center">

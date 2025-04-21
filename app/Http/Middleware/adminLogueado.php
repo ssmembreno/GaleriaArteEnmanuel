@@ -16,18 +16,15 @@ class adminLogueado
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, int $itsLoged = 0): Response{
-        if ($itsLoged) {
-            if(Auth::check()){
-                return $next($request);
-            }
-            return redirect()->route('admin.login');
-        }
+    public function handle(Request $request, Closure $next, $acceso): Response{
 
-        //Si el usuario no necesita logearse (Ya esta logeado)
         if(!Auth::check()){
-            return $next($request);
+            return redirect()->route('admin.home');
         }
-        return redirect()->route('admin.home');
+        $user = Auth::user();
+        if($acceso ==  1 && $user->rol !== 'admin'){
+            abort(403,'Acceso no autorizado');
+        }
+        return $next($request);
     }
 }

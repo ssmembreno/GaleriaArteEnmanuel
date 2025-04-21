@@ -22,4 +22,15 @@ class Obra extends Model
         'artista_id',
         'tipo_obra_id'
     ];
+
+    public function artista()
+    {
+        return $this->belongsTo(Artista::class);
+    }
+
+    public function tipoObra()
+    {
+        return $this->belongsTo(TipoObra::class);
+    }
+
 }

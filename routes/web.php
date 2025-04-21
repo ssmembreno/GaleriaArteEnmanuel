@@ -1,15 +1,17 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Models\homeController;
+use App\Models\Obra;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('index');
-});
 
-Route::get('/artDetails',function(){
-    return view('artDetails');
-});
+Route::get('/', [HomeController::class, 'index'])->name('inicio');
+
+Route::get('/artDetails/{id}',function($id){
+    $obra = Obra::findOrFail($id);
+    return view('galery.artDetails',compact('obra'));
+})->name('obraDetails');
 
 Route::get('/ aboutUs',function(){
     return view('aboutUs');
@@ -23,6 +25,7 @@ Route::get('eventsNews',function(){
     return view('eventsNews');
 });
 
+Route::get('/galeria',[homeController::class,'galeria']);
 
 /*
  ADMINISTRADOR
@@ -43,12 +46,27 @@ Route::prefix('admin')->group(function(){
     });
 });
 
+//Login and Register
+Route::middleware('guest')->group(function(){
+    //Login
+     Route::get('login', [App\Http\Controllers\Login\LoginController::class, 'loginForm'])->name('login');
+     Route::post('login', [App\Http\Controllers\Login\LoginController::class, 'login'])->name('login');
+
+     //Register
+    Route::get('register', [App\Http\Controllers\Login\RegisterController::class, 'registerForm'])->name('register');
+    Route::post('register', [App\Http\Controllers\Login\RegisterController::class, 'register'])->name('register');
+});
+
+//Logout
+Route::post('logout', [App\Http\Controllers\Login\LoginController::class, 'logout'])->name('logout');
+
+
 
 Route::get('crearUsuario',function(){
    $user = new \App\Models\User();
    $user->name = 'Samuel';
    $user->apellido = 'Membreño';
    $user->email = 'samuel@gmail.com';
-   $user->password = \Illuminate\Support\Facades\Hash::make('123');
+   $user->password = \Illuminate\Support\Facades\Hash::make('123456');
    $user->save();
 });

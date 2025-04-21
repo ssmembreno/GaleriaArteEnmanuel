@@ -13,7 +13,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">🎨 Galería</a>
+        <a class="navbar-brand" href="{{url('/')}}">🎨 Galería</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
           aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -28,8 +28,28 @@
         </div>
         <!-- Login/Register -->
         <div class="d-flex">
-            <a href="#" class="btn btn-outline-light me-2">Login</a>
-            <a href="#" class="btn btn-light">Registro</a>
+            @guest
+                <li class="nav-item">
+                    <a class="btn btn-outline-light mr-2" href="{{ route('login') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-light" href="{{ route('register') }}">Registro</a>
+                </li>
+            @endguest
+
+            @auth
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-toggle="dropdown">
+                        {{ Auth::user()->name }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                        </form>
+                    </div>
+                </li>
+            @endauth
         </div>
       </div>
     </nav>

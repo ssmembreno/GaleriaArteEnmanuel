@@ -6,8 +6,16 @@
     <div class="container-fluid">
         @include('_includes/Modules')
 
-        <form action="{{ route('obras.store') }}" method="POST">
+        <form action="{{ route('obras.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            <div class="form-group">
+                <label for="artista_id">Artista</label>
+                <select class="form-control" id="artista_id" name="artista_id" >
+                    @foreach($artistas as $artista)
+                        <option value="{{ $artista->id }}">{{ $artista->nombre }}</option>
+                    @endforeach
+                </select>
+            </div>
 
             <div class="form-group">
                 <label for="nombre">Título de la Obra</label>
@@ -39,25 +47,28 @@
             </div>
 
             <div class="form-group">
-                <label for="estado">Estado</label>
-                <input type="text" class="form-control" id="estado" name="estado">
-            </div>
-
-            <div class="form-group">
-                <label for="imagen">URL o nombre de la imagen</label>
-                <input type="text" class="form-control" id="imagen" name="imagen">
-            </div>
-
-            <div class="form-group">
-                <label for="artista_id">Artista</label>
-                <select class="form-control" id="artista_id" name="artista_id" >
-                    @foreach($artistas as $artista)
-                        <option value="{{ $artista->id }}">{{ $artista->nombre }}</option>
-                    @endforeach
+                <label for="estado" class="form-label">Estado</label>
+                <select class="form-control" name="estado" id="estado" class="form-select" required>
+                    <option value="EnVenta">En Venta</option>
+                    <option value="Vendida">Vendida</option>
                 </select>
             </div>
+
+            <div class="form-group">
+                <label for="imagen">Imagen Principal <span>(Recuerda subir una imagen)</span></label>
+                <input type="file" class="form-control" id="imagen" name="imagen" onchange="previewImage(event)">
+                <img id="preview" src="#" alt="Vista previa" style="display: none; max-width: 200px; margin-top: 10px;">
+            </div>
+
+            <div class="form-group">
+                <label for="imagenes">Imágenes adicionales (Detalles)</label>
+                <input type="file" class="form-control" id="imagenes" name="imagenes[]" onchange="previewMultipleImages(event)" multiple>
+                <div id="previewMultiples" class="d-flex flex-wrap mt-3"></div>
+            </div>
+
             <button type="submit" class="btn btn-primary">Guardar Obra</button>
             <a href="{{ route('obras.index') }}" class="btn btn-secondary">Volver al listado</a>
         </form>
     </div>
 @endsection
+

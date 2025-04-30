@@ -19,6 +19,7 @@
         rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="{{asset('admin-assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body id="page-top">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\obraController;
 use App\Http\Controllers\Models\homeController;
 use App\Models\Obra;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,7 @@ Route::prefix('admin')->group(function(){
          Route::get('logout', [AdminController::class, 'logout'])->name('admin.logout'); //Logout
 
         Route::resource('obras', \App\Http\Controllers\Backend\obraController::class);
+
     });
 });
 

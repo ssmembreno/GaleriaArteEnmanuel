@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CrearObraRequest;
 use App\Http\Requests\EditObras;
 use App\Models\Artista;
+use App\Models\ImagenObra;
 use App\Models\tipoObra;
 use Illuminate\Http\Request;
 use App\Models\Obra;
+use PhpParser\Node\Expr\Array_;
+use Illuminate\Support\Arr;
 
 class obraController extends Controller
 {
@@ -44,10 +47,30 @@ class obraController extends Controller
         $obra->tamaño = $request->input('tamaño');
         $obra->precio = $request->input('precio');
         $obra->estado = $request->input('estado');
-        $obra->imagen = $request->input('imagen');
         $obra->artista_id = $request->input('artista_id');
         $obra->tipo_obra_id = $request->input('tipo_obra_id');
+
+        //Se maneja la subida de la imagen principal
+        if($request->hasFile('imagen')){
+            $storageLink = $request->file('imagen')->store('obras', 'public');
+            $obra->imagen = $storageLink;
+        }
+
         $obra->save();
+
+        //Control de las imagenes multiples en detalles
+        if($request->hasFile('imagenes')){
+            foreach ($request->file('imagenes') as $key => $imagenAdicional) {
+                $storageLink = $imagenAdicional->store('obras', 'public');
+
+                ImagenObra::create([
+                    'ruta_imagen' => $storageLink,
+                    'obra_id' => $obra->id,
+                    'orden' => $key + 1,
+                ]);
+            }
+        }
+
         return redirect()->route('obras.index')-> with('success','Obra creada correctamente');
     }
 
@@ -81,14 +104,38 @@ class obraController extends Controller
      */
     public function update(EditObras $request, string $id)
     {
-
         $obra = \App\Models\Obra::find($id);
+
         if (!$obra) {
-            abort(404);
-        }else{
-            $obra->update($request->all());
-            return redirect()->route('obras.index',$obra -> id)-> with('success','Obra actualizada correctamente');
+            abort(404,'OBRA NO ENCONTRADA');
         }
+
+        //Se obtiene la informacion del request menos el campo imagen
+        $datos = Arr::except($request->validated(),['imagen',]);
+
+        //verificamos si el request contiene un archivo en campo imagen y la almacenamos en storage/public
+        if($request->hasFile('imagen')){
+            $storageLink = $request->file('imagen')->store('obras', 'public');
+            $datos['imagen'] = $storageLink;
+        }
+
+        //Se actualizan los datos del request
+        $obra->update($datos);
+
+        //Control de multiples imagenes
+        if($request->hasFile('imagenes')){
+            foreach ($request->file('imagenes') as $key => $imagenAdicional) {
+                $storageLink = $imagenAdicional->store('obras', 'public');
+
+                ImagenObra::create([
+                    'ruta_imagen' => $storageLink,
+                    'obra_id' => $obra->id,
+                    'orden' => $key + 1,
+                ]);
+            }
+        }
+        return redirect()->route('obras.index')-> with('success','Obra actualizada correctamente');
+
     }
 
     /**
@@ -104,4 +151,5 @@ class obraController extends Controller
         $obra->delete();
         return redirect()->route('obras.index')->with('success','Obra eliminada correctamente');
     }
+
 }

@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <!--Se controla los errores de la validacion del formulario de edicion de la obra -->
             @include('_includes/Modules')
-            <form action="{{action([App\Http\Controllers\Backend\obraController::class,'update'],$obra->id)}}" method="POST">
+            <form action="{{action([App\Http\Controllers\Backend\obraController::class,'update'],$obra->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <div class="form-group">
@@ -13,6 +13,14 @@
                     <input type="text" class="form-control" id="id" name="id" autocomplete="off" value="{{$obra->id}}" disabled >
                 </div>
 
+                <div class="form-group">
+                    <label for="artista_id">Artista</label>
+                    <select class="form-control" id="artista_id" name="artista_id" >
+                        @foreach($artistas as $artista)
+                            <option value="{{ $artista->id }}">{{ $artista->nombre }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="form-group">
                     <label for="nombre">Título de la Obra</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" autocomplete="off" value="{{$obra->nombre}}"  >
@@ -43,22 +51,35 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="estado">Estado</label>
-                    <input type="text" class="form-control" id="estado" name="estado" autocomplete="on" value="{{$obra->estado}}">
-                </div>
-
-                <div class="form-group">
-                    <label for="imagen">URL o nombre de la imagen</label>
-                    <input type="text" class="form-control" id="imagen" name="imagen" autocomplete="off" value="{{$obra->imagen}}">
-                </div>
-
-                <div class="form-group">
-                    <label for="artista_id">Artista</label>
-                    <select class="form-control" id="artista_id" name="artista_id" >
-                        @foreach($artistas as $artista)
-                            <option value="{{ $artista->id }}">{{ $artista->nombre }}</option>
-                        @endforeach
+                    <label for="estado" class="form-label">Estado</label>
+                    <select class="form-control" name="estado" id="estado" class="form-select" required>
+                        <option value="EnVenta">En Venta</option>
+                        <option value="Vendida">Vendida</option>
                     </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="imagen">imagen</label>
+                    <input type="file" class="form-control" id="imagen" name="imagen" autocomplete="off">
+                    @if($obra->imagen !== '')
+                        <img src="{{asset('storage/'.$obra->imagen)}}" width="160px" height="160px" class="img-thumbnail mt-3">
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <label for="imagenes">Imágenes adicionales (Detalles)</label>
+                    <input type="file" class="form-control" id="imagenes" name="imagenes[]" multiple>
+                    <div id="previewMultiples" class="d-flex flex-wrap mt-3"></div>
+                    {{-- Mostrar imágenes adicionales ya existentes --}}
+                    @if($obra->imagenes->count() > 0)
+                        <div id="imagenesExistentes" class="d-flex flex-wrap mt-3">
+                            @foreach($obra->imagenes as $imagen)
+                                <div class="m-2">
+                                    <img src="{{ asset('storage/' . $imagen->ruta_imagen) }}" alt="Imagen adicional" class="img-thumbnail" style="max-width: 150px;">
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
 
                 <button type="submit" class="btn btn-primary">Guardar Obra</button>

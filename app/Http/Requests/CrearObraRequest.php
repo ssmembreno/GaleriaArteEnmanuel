@@ -23,11 +23,12 @@ class CrearObraRequest extends FormRequest
     {
         return [
             'nombre' => 'required|max:30',
-            'descripcion' => 'required|min:10|max:200',
+            'descripcion' => 'required|min:10|max:400',
             'precio' => 'required|decimal:2,4',
             'tamaño' => 'required|string',
-            'estado' => 'required|string',
-            'imagen' => 'required|string',
+            'estado' => 'required|in:EnVenta,Vendida',
+            'imagen' => 'nullable|image',
+            'imagenes.*' => 'nullable|image',
             'artista_id' => 'required|string',
             'tipo_obra_id' => 'required|string',
         ];

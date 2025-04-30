@@ -13,7 +13,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">🎨 Galería</a>
+        <a class="navbar-brand" href="{{url('/')}}">🎨 Galería</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
           aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -72,7 +72,7 @@
             <a href="#" class="btn btn-purple">Browse artworks</a>
           </div>
           <div class="col-md-6 right-image">
-            <img src="{{ asset('img/Enmanuel1.webp') }}" alt="Imagen 1">
+            <img src="{{ asset('img/Enmanuel1.jpg') }}" alt="Imagen 1">
           </div>
         </div>
       </div>
@@ -85,7 +85,7 @@
             <a href="#" class="btn btn-purple">View events</a>
           </div>
           <div class="col-md-6 right-image">
-            <img src="{{ asset('img/Enmanuel2.webp') }}" alt="Imagen 2">
+            <img src="{{ asset('img/Enmanuel2.jpg') }}" alt="Imagen 2">
           </div>
         </div>
       </div>
@@ -98,7 +98,7 @@
             <a href="#" class="btn btn-purple">Start now</a>
           </div>
           <div class="col-md-6 right-image">
-            <img src="{{ asset('img/Enmanuel3.webp') }}" alt="Imagen 3">
+            <img src="{{ asset('img/Enmanuel3.jpg') }}" alt="Imagen 3">
           </div>
         </div>
       </div>
@@ -119,9 +119,9 @@
     </button>
   </div>
 
-  <main class="container my-5 flex-grow-1">
+  <section>
       @include('galery/galeryArt')
-  </main>
+  </section>
   <!-- FOOTER -->
   <footer class="bg-dark text-white py-3 mt-auto text-center">
     <div class="container">

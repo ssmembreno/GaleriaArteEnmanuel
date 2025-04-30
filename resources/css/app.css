@@ -1,7 +1,7 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
 /**/
-.hero-carousel .carousel-item { 
+.hero-carousel .carousel-item {
   height: 100%;
   width: 100%;
 }
@@ -108,23 +108,263 @@
   background-color: #a100ff;
 }
 .carousel-indicators [data-bs-target]:hover {
-  background-color: #a100ff; 
-}  
-
-/* Tarjetas de obras */
-.obra-card img {
-  height: 200px;
-  object-fit: cover;
+  background-color: #a100ff;
 }
 
-/* Filtros y noticias */
-.filtros .noticias {
-  background-color: #313e4b;
-  padding: 1rem;
-  border-radius: 8px;
+/* Diseño de las tarjetas */
+.obra-card {
+    max-width: 260px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
+.obra-card:hover {
+    transform: scale(1.02);
+}
 
+.obra-img-wrapper img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Info debajo de la obra */
+.obra-info {
+    padding: 10px 5px;
+    font-size: 0.95rem;
+}
+
+.obra-info strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+.obra-info small {
+    color: #555;
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.obra-info span {
+    color: #000;
+    font-weight: bold;
+}
+
+/* Filtros modernizados */
+.filtros {
+    margin-top:30px ;
+    border: 1px solid #ddd;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.filtros h5 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.filtros select,
+.filtros input {
+    font-size: 1rem;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.filtros button {
+    font-weight: bold;
+    background-color: #000;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+.filtros button:hover {
+    background-color: #333;
+}
+
+/* Responsive spacing entre filtros y galería */
+.col-md-2 {
+    margin-right: 30px;
+    padding-left: 5px;
+}
+
+.col-md-10 {
+    padding-left: 40px;
+}
+
+/*Galeria de obras HOME*/
+.ribbon {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    z-index: 10;
+}
+
+.ribbon span {
+    position: absolute;
+    display: block;
+    width: 200px;
+    padding: 5px 0;
+    background-color: red;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    transform: rotate(-45deg);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    top: 25px;
+    left: -55px;
+}
+/*DETALLES DE LAS OBRAS*/
+.main-image {
+    width: 100%;
+    max-width: 100%;
+    height: 80vh; /* 80% del alto de la ventana */
+    background-color: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-image:hover {
+    transform: scale(1.03); /* Zoom suave al pasar mouse */
+}
+
+.main-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 16px;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+    position: relative;
+}
+
+.main-image img.fade-out {
+    opacity: 0;
+}
+
+.thumbnail-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.thumbnail {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.thumbnail:hover {
+    border: 2px solid black;
+}
+
+.obra-info{
+    margin-left: 10px;
+}
+
+.obra-info h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.obra-info .rating {
+    font-size: 1.2rem;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.btn-contact{
+    background-color: #5ec916;
+    border-radius: 45px;
+    color: white;
+    font-weight: bold;
+}
+
+.extra-info {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.status-art-details{
+    border-radius: 45px;
+    background-color: #5ec916;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.status-art-details-red{
+    border-radius: 45px;
+    background-color: #ff0000;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.extra-info p {
+    margin-bottom: 10px;
+}
+
+.btn-dark {
+    background-color: #000;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 8px;
+}
+.modal-body {
+    padding: 0 !important;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+.modal-carousel-img {
+    width: auto;
+    height: auto;
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.carousel-control-prev,
+.carousel-control-next {
+    z-index: 10;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-size: 70% 70%;
+}
+/*Media main carrusel*/
 @media screen and (max-width: 1160px)  {
 .hero-carousel {
   display: flex;
@@ -220,3 +460,45 @@
     bottom: 10px;
   }
 }
+
+/* Layout tipo masonry */
+.masonry-container {
+    column-count: 4;
+    column-gap: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+    .masonry-container {
+        column-count: 3;
+    }
+}
+@media (max-width: 768px) {
+    .masonry-container {
+        column-count: 2;
+    }
+}
+@media (max-width: 576px) {
+    .masonry-container {
+        column-count: 1;
+    }
+}
+
+.obra-card {
+    break-inside: avoid;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    margin-left: 1rem;
+}
+
+.obra-img-wrapper img {
+    width: 100%;
+    height: auto; /* Altura variable */
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+

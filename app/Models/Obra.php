@@ -23,6 +23,7 @@ class Obra extends Model
         'tipo_obra_id'
     ];
 
+    //Relaciones a las tablas de artistas, tipoObras , imagenes_obra
     public function artista()
     {
         return $this->belongsTo(Artista::class);
@@ -33,4 +34,7 @@ class Obra extends Model
         return $this->belongsTo(TipoObra::class);
     }
 
+    public function imagenes(){
+        return $this->hasMany(ImagenObra::class);
+    }
 }

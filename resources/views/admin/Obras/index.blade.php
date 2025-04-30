@@ -14,6 +14,7 @@
                     <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
+                            <th>Imagen</th>
                             <th>ID Obra</th>
                             <th>Titulo Obra</th>
                             <th>Descripcion</th>
@@ -26,6 +27,7 @@
                         </thead>
                         <tfoot>
                         <tr>
+                            <th>Imagen</th>
                             <th>ID Obra</th>
                             <th>Titulo Obra</th>
                             <th>Descripcion</th>
@@ -39,6 +41,9 @@
                         <tbody>
                             @foreach($obras as $obra)
                                 <tr>
+                                    <td>
+                                        <img src="{{asset('storage/'.$obra->imagen)}}" alt="{{$obra->nombre}}" height="130px" width="130px" style="display: flex; margin:0px auto; justify-content: center; align-items: center">
+                                    </td>
                                     <td>{{ $obra->id }}</td>
                                     <td>{{ $obra->nombre }}</td>
                                     <td>{{ $obra->descripcion }}</td>

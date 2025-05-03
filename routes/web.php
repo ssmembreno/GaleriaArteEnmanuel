@@ -1,16 +1,16 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
-use App\Http\Controllers\Backend\obraController;
+use App\Http\Controllers\Backend\PerfilController;
 use App\Http\Controllers\Models\homeController;
 use App\Models\Obra;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [HomeController::class, 'index'])->name('inicio');
+Route::get('/', [HomeController::class, 'home'])->name('inicio');
 
 Route::get('/artDetails/{id}',function($id){
-    $obra = Obra::findOrFail($id);
+    $obra = Obra::with('comentarios','valoraciones')->findOrFail($id);
     return view('galery.artDetails',compact('obra'));
 })->name('obraDetails');
 
@@ -27,6 +27,15 @@ Route::get('eventsNews',function(){
 });
 
 Route::get('/galeria',[homeController::class,'galeria']);
+
+Route::get('/perfil',[PerfilController::class,'index'])->middleware('auth')->name('perfil');
+
+
+Route::post('/comentarios/{obra}',[\App\Http\Controllers\Backend\ComentariosController::class,'store'])->name('comentarios.store');
+
+Route::post('/valorar/{obra}',[\App\Http\Controllers\Backend\Valoraciones::class,'store'])->name('valorar.store');
+
+Route::post('/favoritos/{obra}', [\App\Http\Controllers\Backend\FavoritosController::class, 'toggle'])->middleware('auth')->name('favoritos.toggle');
 
 /*
  ADMINISTRADOR
@@ -61,6 +70,7 @@ Route::middleware('guest')->group(function(){
 
 //Logout
 Route::post('logout', [App\Http\Controllers\Login\LoginController::class, 'logout'])->name('logout');
+
 
 
 

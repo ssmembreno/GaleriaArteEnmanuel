@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Login;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Models\Controller;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -29,6 +29,6 @@ class RegisterController extends Controller
         ]);
 
         auth()->login($user);
-        return redirect()->route('/');
+        return redirect()->route('inicio');
     }
 }

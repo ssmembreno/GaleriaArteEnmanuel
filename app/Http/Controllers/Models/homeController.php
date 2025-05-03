@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Models;
 
-use App\Http\Controllers\Controller;
 use App\Models\Obra;
-use Illuminate\Http\Request;
 
 class homeController extends Controller
 {
-    public function index(){
+    public function home(){
         $obras = Obra::all();
-        return view('index', compact('obras'));
+        return view('home', compact('obras'));
     }
 
     public function galeria(){

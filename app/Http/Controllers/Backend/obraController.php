@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Models\Controller;
 use App\Http\Requests\CrearObraRequest;
 use App\Http\Requests\EditObras;
 use App\Models\Artista;
 use App\Models\ImagenObra;
-use App\Models\tipoObra;
-use Illuminate\Http\Request;
 use App\Models\Obra;
-use PhpParser\Node\Expr\Array_;
+use App\Models\tipoObra;
 use Illuminate\Support\Arr;
 
 class obraController extends Controller

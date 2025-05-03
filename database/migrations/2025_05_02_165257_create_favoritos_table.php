@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('valoraciones', function (Blueprint $table) {
+        Schema::create('favoritos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('obra_id')->constrained('obras')->onDelete('cascade');
-            $table->tinyInteger('calificacion');
-            $table->string('comentario');
-            $table->date('fecha_valoracion');
-            $table->date('fecha_comentario');
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('valoracion');
+        Schema::dropIfExists('favoritos');
     }
 };

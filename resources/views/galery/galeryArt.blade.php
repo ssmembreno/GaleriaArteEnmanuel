@@ -1,3 +1,5 @@
+
+@section('contentART')
 <div class="container">
     <h2 class="text-center my-4">Galería de Arte</h2>
     <div class="d-flex gap-4">
@@ -36,15 +38,21 @@
                 <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center">
                 <div class="obra-card text-center h-100 d-flex flex-column justify-content-between">
                         <div class="obra-img-wrapper position-relative">
-                            @if ($obra->estado === 'Vendida')
+                            <a href="{{ route('obraDetails', $obra->id) }}">
+                                @if ($obra->estado === 'Vendida')
                                 <div class="ribbon"><span>Vendida</span></div>
                             @endif
-                            <a href="{{ route('obraDetails', $obra->id) }}">
                                 <img src="{{ asset('storage/'.$obra->imagen) }}" alt="{{ $obra->nombre }}">
                             </a>
                         </div>
                         <div class="obra-info mt-3 px-2 pb-3">
                             <strong>{{ $obra->nombre }}</strong>
+
+                            <!--Manejo de favoritos con JS y AJAX para evitar el recargo de la web al añadir una obra a favoritos-->
+                            <button type="button" class="btn toggle-favorito" data-id="{{ $obra->id }}">
+                                {{ auth()->check() && auth()->user()->favoritos()->where('obra_id', $obra->id)->exists() ? '❤️' : '🤍' }}
+                            </button>
+
                             <small>{{ $obra->descripcion }}</small>
                             <span>{{ number_format($obra->precio, 2) }} $</span>
                         </div>
@@ -57,3 +65,4 @@
 
     </div>
 </div>
+@endsection

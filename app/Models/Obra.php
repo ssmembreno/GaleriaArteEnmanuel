@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Comentario;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -36,5 +37,17 @@ class Obra extends Model
 
     public function imagenes(){
         return $this->hasMany(ImagenObra::class);
+    }
+
+    public function comentarios(){
+        return $this->hasMany(Comentario::class);
+    }
+
+    public function valoraciones(){
+        return $this->hasMany(Valoracion::class);
+    }
+
+    public function favoritos(){
+        return $this->hasMany(Favoritos::class);
     }
 }

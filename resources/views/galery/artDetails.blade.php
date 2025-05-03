@@ -4,7 +4,7 @@
     <div class="container mt-5">
         <div class="row gy-5 align-items-start">
             <!-- Imagen principal -->
-            <div class="col-lg-8 col-md-12 text-center">
+            <div class="col-lg-8 col-md-12 text-center animate-left">
                 <div class="main-image mb-2 mx-auto" id="mainImageWrapper" style="cursor: zoom-in;">
                     <img src="{{ asset('storage/'.$obra->imagen) }}" alt="Obra principal" class="img-fluid" id="mainImage">
                 </div>
@@ -18,18 +18,33 @@
             </div>
 
             <!-- Información de la obra -->
-            <div class="col-lg-4 col-md-12">
+            <div class="col-lg-4 col-md-12 animate-left">
                 <div class="obra-info">
                     <h1>{{ $obra->nombre }}</h1>
                     <p class="text-muted">by {{ $obra->artista->nombre ?? 'Unknown Artist' }}</p>
 
-                    <div class="rating mb-2">
-                        ★★★★★ <span class="text-muted">(150 reviews)</span>
-                    </div>
-
-                    <p class="price">$ {{ number_format($obra->precio, 2) }}</p>
+                    <p class="price">${{ number_format($obra->precio, 2) }}</p>
 
                     <button class="btn btn-contact w-100 my-4 py-3">Contacta con el artista</button>
+
+                    @php
+                        $promedio = round($obra->valoraciones->avg('calificacion'), 1);
+                        $cantidad = $obra->valoraciones->count();
+                    @endphp
+
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <strong>Valoraciones({{ $cantidad }})</strong>
+
+                        <div>
+                            @for ($i = 1; $i <= 5; $i++)
+                                @if ($i <= floor($promedio))
+                                    <span style="color: #fcd34d; font-size: 1.5rem;">★</span>
+                                @else
+                                    <span style="color: #ccc; font-size: 1.5rem;">★</span>
+                                @endif
+                            @endfor
+                        </div>
+                    </div>
 
                     <h5 class="mt-4">Description</h5>
                     <p>{{ $obra->descripcion }}</p>
@@ -67,7 +82,63 @@
         </div>
     </div>
 
-    <!-- Modal Bootstrap con Carousel mejorado -->
+    @auth
+        <h3 class="mt-5">Valora esta obra</h3>
+
+        <form action="{{ route('valorar.store', ['obra' => $obra->id]) }}" method="POST">
+            @csrf
+            <div class="star-rating mb-3">
+                @for ($i = 1; $i <= 5; $i++)
+                    <span class="star" data-value="{{ $i }}">☆</span>
+                @endfor
+            </div>
+
+            <input type="hidden" name="calificacion" id="calificacion" value="">
+
+            <button type="submit" class="btn btn-success" disabled id="submitValoracion">Enviar valoración</button>
+        </form>
+
+    @endauth
+
+    @guest
+        <p class="mb-3">Para dejar una valoración necesitas estar registrado.</p>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+            Iniciar sesión o registrarse
+        </button>
+    @endguest
+
+
+    <div>
+        <h3>Comentarios</h3>
+        @auth
+            <form action="{{ route('comentarios.store', ['obra' => $obra->id]) }}" method="POST">
+                @csrf
+                <textarea name="contenido" required></textarea>
+                <button type="submit">Enviar comentario</button>
+            </form>
+        @endauth
+
+        @guest
+            <p class="mb-3">Para dejar un comentario necesitas estar registrado.</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                Iniciar sesión o registrarse
+            </button>
+        @endguest
+
+        @if($obra->comentarios && $obra->comentarios->count())
+            @foreach($obra->comentarios as $comentario)
+                <div class="comentario mb-2 p-2 border rounded">
+                    <strong>{{ $comentario->user->name}}</strong> dice:
+                    <p>{{ $comentario->contenido }}</p>
+                    <small>{{ $comentario->created_at->diffForHumans() }}</small>
+                </div>
+            @endforeach
+        @else
+            <p>No hay comentarios aún.</p>
+        @endif
+    </div>
+
+    <!-- Modal Bootstrap con Carousel -->
     <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content bg-dark border-0">
@@ -108,29 +179,71 @@
     </div>
 
 
+    <!-- Modal de Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content px-3 py-4">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title">Iniciar sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <button class="btn w-100 mb-3 btn-danger"> <i class="fab fa-google me-2"></i> Google</button>
+                    </div>
+
+                    <div class="text-center my-3">
+                        <hr class="w-25 d-inline-block"> <span class="px-2 text-muted">O</span> <hr class="w-25 d-inline-block">
+                    </div>
+
+                    <form action="{{ route('login') }}" method="POST">
+                        @csrf
+
+                        <div class="mb-3">
+                            <label class="form-label">Correo electrónico</label>
+                            <input type="email" name="email" class="form-control" required>
+                            @error('email')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Contraseña</label>
+                            <div class="input-group">
+
+                                <input type="password" name="password" class="form-control" required id="loginPassword">
+                                <span class="input-group-text" onclick="togglePassword()"> 👁️ </span>
+                                @error('password')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" name="remember" class="form-check-input" id="remember">
+                            <label class="form-check-label" for="remember">Recordarme</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-dark w-100">Iniciar sesión</button>
+
+                        <div class="mt-3 text-center">
+                            <a href="#">¿Olvidaste tu contraseña?</a>
+                            <br>
+                            <small>¿No tienes cuenta? <a href="{{ route('register') }}">Regístrate</a></small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const thumbnails = document.querySelectorAll('.thumbnail');
-            const mainImage = document.getElementById('mainImage');
-            const mainImageWrapper = document.getElementById('mainImageWrapper');
-
-            thumbnails.forEach((thumbnail, index) => {
-                thumbnail.addEventListener('click', () => {
-                    mainImage.classList.add('fade-out');
-                    setTimeout(() => {
-                        mainImage.src = thumbnail.src;
-                        mainImage.classList.remove('fade-out');
-                        // Cambiar el slide activo en el carousel también
-                        const carousel = new bootstrap.Carousel(document.getElementById('carouselImages'));
-                        carousel.to(index);
-                    }, 300);
-                });
-            });
-
-            mainImageWrapper.addEventListener('click', function () {
-                const myModal = new bootstrap.Modal(document.getElementById('imageModal'));
-                myModal.show();
-            });
-        });
+        @if ($errors->has('email') || $errors->has('password'))
+        // Espera a que cargue el DOM y abre el modal automáticamente
+        window.onload = function() {
+            let loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            loginModal.show();
+        };
+        @endif
     </script>
 @endsection

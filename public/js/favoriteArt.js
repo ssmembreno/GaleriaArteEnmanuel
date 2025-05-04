@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     setTimeout(() => {
                         this.classList.remove('bounce');
-                        this.textContent = this.textContent.includes('❤️') ? '🤍' : '❤️';
+                        this.textContent = this.textContent.includes('❤️') ? ' ♡' : '❤️';
                     }, 300);
                 })
                 .catch(() => {

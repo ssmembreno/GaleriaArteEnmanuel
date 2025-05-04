@@ -1,6 +1,7 @@
-@import "bootstrap/dist/css/bootstrap.min.css";
-
 /**/
+*{
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
 .hero-carousel .carousel-item {
   height: 100%;
   width: 100%;
@@ -110,138 +111,230 @@
 .carousel-indicators [data-bs-target]:hover {
   background-color: #a100ff;
 }
+/*CARDS OBRAS*/
+.art-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-/* Diseño de las tarjetas */
-.obra-card {
-    max-width: 260px;
-    background: #fff;
-    border-radius: 8px;
+.art-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.art-image {
+    height: 350px;
     overflow: hidden;
-    transition: transform 0.3s ease;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-.obra-card:hover {
-    transform: scale(1.02);
-}
-
-.obra-img-wrapper img {
-    width: 100%;
-    height: 230px;
+.art-image img {
+    height: 100%;
     object-fit: cover;
-    border-radius: 8px;
+    transition: transform 0.4s ease;
 }
 
-/* Info debajo de la obra */
-.obra-info {
-    padding: 10px 5px;
-    font-size: 0.95rem;
+.art-card:hover .art-image img {
+    transform: scale(1.05);
 }
 
-.obra-info strong {
-    display: block;
-    font-size: 1rem;
-    margin-bottom: 0.3rem;
-}
-
-.obra-info small {
-    color: #555;
-    display: block;
-    margin-bottom: 0.2rem;
-}
-
-.obra-info span {
-    color: #000;
-    font-weight: bold;
-}
-
-/*FAVORITOS*/
-.bounce {
-    animation: bounce 0.3s ease;
-}
-
-@keyframes bounce {
-    0%   { transform: scale(1); }
-    30%  { transform: scale(1.3); }
-    60%  { transform: scale(0.95); }
-    100% { transform: scale(1); }
+.art-actions button,
+.art-actions a {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
-/* Filtros modernizados */
-.filtros {
-    margin-top:30px ;
-    border: 1px solid #ddd;
-    padding: 1.5rem;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-}
-
-.filtros h5 {
+/* SEO-friendly */
+article h2 {
     font-size: 1.25rem;
-    margin-bottom: 1rem;
 }
 
-.filtros select,
-.filtros input {
-    font-size: 1rem;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    width: 100%;
+article p {
+    font-size: 0.9rem;
 }
 
-.filtros button {
-    font-weight: bold;
-    background-color: #000;
-    color: white;
-    padding: 10px;
-    width: 100%;
-    border: none;
-    border-radius: 6px;
-    transition: background-color 0.3s;
-}
-
-.filtros button:hover {
-    background-color: #333;
-}
-
-/* Responsive spacing entre filtros y galería */
-.col-md-2 {
-    margin-right: 30px;
-    padding-left: 5px;
-}
-
-.col-md-10 {
-    padding-left: 40px;
-}
-
-/*Galeria de obras HOME*/
-.ribbon {
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
+/*Vendida CARD*/
+.etiqueta-vendida {
+    margin-left: 20px;
     position: absolute;
-    top: -5px;
-    left: -5px;
+    background: red;
+    color: white;
+    font-weight: 500;
+    padding: 25px 3px; /* más fino */
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 0.75rem; /* más pequeño */
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 75% 100%, 50% 85%, 25% 100%, 0 85%);
+    animation: rebote-entrada 1s ease;
     z-index: 10;
 }
 
-.ribbon span {
-    position: absolute;
-    display: block;
-    width: 200px;
-    padding: 5px 0;
-    background-color: red;
-    color: white;
-    text-align: center;
-    font-weight: bold;
-    transform: rotate(-45deg);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    top: 25px;
-    left: -55px;
+.etiqueta-vendida span {
+    transform: rotate(180deg);
+    display: inline-block;
 }
+
+@keyframes rebote-entrada {
+    0% { transform: translateY(-30px); opacity: 0; }
+    60% { transform: translateY(10px); opacity: 1; }
+    100% { transform: translateY(0); }
+}
+
+
+
+/*FAVORITOS*/
+.filtros {
+    background-color: #ffffff;
+    padding: 2rem 1.5rem;
+    border-radius: 1.5rem;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    border: none;
+}
+
+.filtros h5 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #000;
+}
+
+.filtros .form-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.filtros .form-select,
+.filtros .form-control {
+    border: none;
+    border-radius: 1.25rem;
+    background-color: #f5f5f5;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    box-shadow: inset 0 0 0 1px #e0e0e0;
+    width: 100%;
+    margin-bottom: 1.2rem;
+}
+
+.filtros .form-select:focus,
+.filtros .form-control:focus {
+    outline: none;
+    box-shadow: inset 0 0 0 2px #ff5a8a;
+    background-color: #fff;
+}
+
+.filtros .form-select option {
+    padding: 0.5rem;
+}
+
+.filtros select.form-select,
+.filtros input.form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* Botón de aplicar */
+.filtros button.btn-primary {
+    background-color: #ff5a8a;
+    border: none;
+    border-radius: 999px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    width: 100%;
+    transition: background-color 0.3s ease;
+    color: white;
+}
+
+.filtros button.btn-primary:hover {
+    background-color: #e84878;
+}
+
+.rango-precio {
+    position: relative;
+}
+
+.slider-container {
+    position: relative;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.range-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    background: transparent;
+    pointer-events: none;
+}
+
+.range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 24px;
+    width: 24px;
+    background-color: white;
+    border: 2px solid #000;
+    border-radius: 50%;
+    pointer-events: all;
+    cursor: pointer;
+    z-index: 3;
+    position: relative;
+}
+
+.range-track {
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background: #e0e0e0;
+    z-index: 1;
+    border-radius: 4px;
+}
+
+/* Precios mínimos y máximos */
+.price-tags {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    gap: 1rem;
+}
+
+.price-box {
+    flex: 1;
+    background-color: #f5f5f5;
+    padding: 0.75rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: inset 0 0 0 1px #e0e0e0;
+}
+
+.price-box small {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #888;
+}
+
+.price-value {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+
 /*DETALLES DE LAS OBRAS*/
 .main-image {
     width: 100%;

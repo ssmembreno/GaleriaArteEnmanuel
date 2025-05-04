@@ -20,7 +20,8 @@ class obraController extends Controller
     {
 
         $obras = Obra::all();
-        return view('admin.Obras.index', compact('obras'));
+        $tiposObra = tipoObra::all();
+        return view('admin.Obras.index', compact('obras','tiposObra'));
     }
 
     /**

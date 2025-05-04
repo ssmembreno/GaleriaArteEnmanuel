@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\PerfilController;
-use App\Http\Controllers\Models\homeController;
+use App\Http\Controllers\Models\HomeController;
+use App\Http\Controllers\Backend\TipoObrasController;
 use App\Models\Obra;
 use Illuminate\Support\Facades\Route;
 
@@ -26,16 +27,20 @@ Route::get('eventsNews',function(){
     return view('eventsNews');
 });
 
-Route::get('/galeria',[homeController::class,'galeria']);
+Route::get('/galeria',[HomeController::class,'galeria']);
 
 Route::get('/perfil',[PerfilController::class,'index'])->middleware('auth')->name('perfil');
 
+
+Route::get('/tipos-obra', [\App\Http\Controllers\Backend\TipoObrasController::class, 'index'])->name('tiposObra.index');
 
 Route::post('/comentarios/{obra}',[\App\Http\Controllers\Backend\ComentariosController::class,'store'])->name('comentarios.store');
 
 Route::post('/valorar/{obra}',[\App\Http\Controllers\Backend\Valoraciones::class,'store'])->name('valorar.store');
 
 Route::post('/favoritos/{obra}', [\App\Http\Controllers\Backend\FavoritosController::class, 'toggle'])->middleware('auth')->name('favoritos.toggle');
+
+Route::get('/filtrar-obras', [HomeController::class, 'filtrarObras'])->name('filtrar.obras');
 
 /*
  ADMINISTRADOR

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class tipoObra extends Model
+class TipoObra extends Model
 {
     use HasFactory;
 

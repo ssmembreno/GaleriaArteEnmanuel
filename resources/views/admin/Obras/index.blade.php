@@ -53,13 +53,13 @@
                                     <td>{{ $obra->estado }}</td>
                                     <td class="mt-3">
                                         <a href="{{ action([App\Http\Controllers\Backend\obraController::class, 'edit'], $obra->id) }}" class="btn btn-warning btn-icon-split">
-                                            <span class="text">Editar</span>
+                                            <span class="text"><i class="fa-solid fa-pen"></i></span>
                                         </a>
 
                                         <form method="POST" action="{{action([\App\Http\Controllers\Backend\obraController::class, 'destroy'],$obra->id)}}" class="mt-2">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar esta obra?')">Eliminar</button>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar esta obra?')"><i class="fa-solid fa-trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>

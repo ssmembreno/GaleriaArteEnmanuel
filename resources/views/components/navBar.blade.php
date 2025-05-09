@@ -1,4 +1,4 @@
-<header>
+<header class="sticky">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{url('/')}}">🎨 Galería</a>
@@ -9,6 +9,7 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link active" href="{{url('/')}}">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{url('ObrasArte')}}">Obras de arte</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{url('aboutUs')}}">Artista</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{url ('eventsNews')}}">Eventos</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{url ('contactUs')}}">Contacto</a></li>
@@ -31,7 +32,12 @@
                             {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="{{route('perfil')}}">Ver perfil</a>
+
+                            @if(Auth::user()->rol === 'admin')
+                                <a class="dropdown-item" href="{{ asset('/admin') }}">Panel de administración</a>
+                            @endif
+
+                                <a class="dropdown-item" href="{{route('perfil')}}">Ver perfil</a>
 
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf

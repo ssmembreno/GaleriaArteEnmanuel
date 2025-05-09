@@ -1,58 +1,45 @@
-<!-- CARRUSEL-->
-<div id="heroSlider" class="carousel slide hero-carousel carousel-fade" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <!-- Slide 1 -->
-        <div class="carousel-item active">
-            <div class="row g-0">
-                <div class="col-md-6 left-content slide1">
-                    <h1>BUY ART ONLINE</h1>
-                    <p>Where to Buy Contemporary Art? ArtMajeur! The Art Gallery with 3,600,000 works for sale by international artists.</p>
-                    <a href="#" class="btn btn-purple">Browse artworks</a>
-                </div>
-                <div class="col-md-6 right-image">
-                    <img src="{{ asset('img/Enmanuel1.jpg') }}" alt="Imagen 1">
-                </div>
+<div class="slider">
+    <!-- list Items -->
+    <div class="list">
+        <div class="item active">
+            <img src="{{asset('img/Enmanuel1.jpg')}}" alt="Obra de arte Enmanuel 1 - realismo">
+            <div class="content">
+                <p>Paisajes</p>
+                <h2>Enmanuel Membreño</h2>
+                <p>
+                    Artista hondureño especializado en el realismo.
+                </p>
             </div>
         </div>
-        <!-- Slide 2 -->
-        <div class="carousel-item">
-            <div class="row g-0">
-                <div class="col-md-6 left-content slide2">
-                    <h1>EXHIBITIONS</h1>
-                    <p>Discover new exhibitions from local and international artists.</p>
-                    <a href="#" class="btn btn-purple">View events</a>
-                </div>
-                <div class="col-md-6 right-image">
-                    <img src="{{ asset('img/Enmanuel2.jpg') }}" alt="Imagen 2">
-                </div>
+        <div class="item">
+            <img src="{{asset('img/Enmanuel2.webp')}}" alt="Obra de arte Enmanuel 2">
+            <div class="content">
+                <p>Arte</p>
+                <h2>Retratos</h2>
+                <p>
+                    Esta obra refleja la evolución del arte abstracto con una mirada fresca y profunda. Parte de la colección personal de Enmanuel.
+                </p>
             </div>
         </div>
-        <!-- Slide 3 -->
-        <div class="carousel-item">
-            <div class="row g-0">
-                <div class="col-md-6 left-content slide3">
-                    <h1>PROMOTE YOUR ART</h1>
-                    <p>Join the platform and showcase your talent to the world.</p>
-                    <a href="#" class="btn btn-purple">Start now</a>
-                </div>
-                <div class="col-md-6 right-image">
-                    <img src="{{ asset('img/Enmanuel3.jpg') }}" alt="Imagen 3">
-                </div>
+        <div class="item">
+            <img src="{{asset('img/Enmanuel3.jpg')}}" alt="Obra de arte Enmanuel 3">
+            <div class="content">
+                <p>Bodegones</p>
+                <h2>Arte</h2>
+                <p>
+                    Una pintura que explora emociones humanas a través del color y la forma. Ideal para amantes del arte auténtico y personal.
+                </p>
             </div>
         </div>
     </div>
-    <!--Indicators
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-    -->
-    <!-- Buttons carousel -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#heroSlider" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#heroSlider" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-    </button>
+    <!-- button arrows -->
+    <div class="arrows">
+        <button id="prev" aria-label="Ver obra anterior"><</button>
+        <button id="next" aria-label="Ver obra siguiente">></button>
+    </div>
+
+    <div class="scroll-down-indicator">
+        <i class='fas fa-angle-double-down' style='font-size:40px; color: white'></i>
+    </div>
+
 </div>

@@ -5,12 +5,11 @@ namespace App\Http\Controllers\Models;
 use App\Models\Obra;
 use App\Models\TipoObra;
 use Illuminate\Http\Request;
-class homeController extends Controller
+class HomeController extends Controller
 {
     public function home(){
-        $obras = Obra::with('tipoObra')->get();
-        $tiposObra = TipoObra::all();
-        return view('home', compact('tiposObra','obras'));
+        $obras = Obra::latest()->take(7)->get();
+        return view('home', compact('obras'));
     }
 
     public function galeria(){
@@ -38,14 +37,14 @@ class homeController extends Controller
         }
 
         if ($request->filled('valoracion')) {
-            $query->whereHas('valoraciones', function ($q) use ($request) {
+            $query->whereHas('comentarios', function ($q) use ($request) {
                 $q->havingRaw('AVG(puntuacion) >= ?', [$request->valoracion]);
             });
         }
 
         $obras = $query->get();
 
-        return view('components.cardsList', compact('obras'))->render();
+        return view('galery.CardsImagesArt', compact('obras'))->render();
 
     }
 }

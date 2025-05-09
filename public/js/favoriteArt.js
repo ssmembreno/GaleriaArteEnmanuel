@@ -1,5 +1,4 @@
-//Accion realizada con AJAX para una mejor experiencia de usuario.
-document.addEventListener('DOMContentLoaded', function () {
+function inicializarBotonesFavoritos() {
     const csrfTokenMeta = document.querySelector('meta[name="csrf-token"]');
     if (!csrfTokenMeta) {
         console.error("CSRF token not found");
@@ -7,10 +6,32 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const token = csrfTokenMeta.getAttribute('content');
+    const obrasFavoritas = window.obrasFavoritas || [];
 
-    document.querySelectorAll('.toggle-favorito').forEach(button => {
-        button.addEventListener('click', function () {
-            const obraId = this.getAttribute('data-id');
+    document.querySelectorAll('.btn-favorito-toggle').forEach(button => {
+        // Prevenir múltiples asignaciones
+        if (button.dataset.eventAttached === "true") return;
+        button.dataset.eventAttached = "true";
+
+        const obraId = parseInt(button.dataset.id);
+        const icon = button.querySelector('i');
+        const isAuth = button.dataset.auth === 'true';
+
+        // Estado inicial
+        if (obrasFavoritas.includes(obraId)) {
+            button.classList.add('activo');
+            icon.classList.remove('fa-regular');
+            icon.classList.add('fa-solid');
+        } else {
+            button.classList.remove('activo');
+            icon.classList.remove('fa-solid');
+            icon.classList.add('fa-regular');
+        }
+
+        button.addEventListener('click', function (e) {
+            if (!isAuth) return; // El modal se abre solo si no está logueado
+
+            e.preventDefault();
 
             fetch(`/favoritos/${obraId}`, {
                 method: 'POST',
@@ -20,22 +41,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             })
                 .then(res => {
-                    if (!res.ok) throw new Error('Error al marcar favorito');
-                    return res.text();
+                    if (!res.ok) throw new Error('No autorizado');
+                    return res.json();
                 })
-                .then(() => {
-                    this.classList.add('bounce');
+                .then(data => {
+                    button.classList.add('bounce');
+                    setTimeout(() => button.classList.remove('bounce'), 300);
 
-                    setTimeout(() => {
-                        this.classList.remove('bounce');
-                        this.textContent = this.textContent.includes('❤️') ? ' ♡' : '❤️';
-                    }, 300);
+                    if (data.favorito) {
+                        button.classList.add('activo');
+                        icon.classList.remove('fa-regular');
+                        icon.classList.add('fa-solid');
+                    } else {
+                        button.classList.remove('activo');
+                        icon.classList.remove('fa-solid');
+                        icon.classList.add('fa-regular');
+                    }
                 })
                 .catch(() => {
                     alert("Error al marcar como favorito");
                 });
         });
     });
-});
+}
 
-console.log('TEST')
+// Ejecutar al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    inicializarBotonesFavoritos();
+});

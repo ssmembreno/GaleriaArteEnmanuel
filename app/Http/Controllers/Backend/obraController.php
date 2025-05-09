@@ -21,6 +21,7 @@ class obraController extends Controller
 
         $obras = Obra::all();
         $tiposObra = tipoObra::all();
+
         return view('admin.Obras.index', compact('obras','tiposObra'));
     }
 
@@ -150,5 +151,6 @@ class obraController extends Controller
         $obra->delete();
         return redirect()->route('obras.index')->with('success','Obra eliminada correctamente');
     }
+
 
 }

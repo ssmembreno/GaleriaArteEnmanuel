@@ -70,10 +70,11 @@ class FavoritosController extends Controller
 
         if ($favorito) {
             $favorito->delete();
+            return response()->json(['success' => true, 'favorito' => false]);
         } else {
             $user->favoritos()->create(['obra_id' => $obraId]);
+            return response()->json(['success' => true, 'favorito' => true]);
         }
-
-        return redirect()->back();
     }
+
 }

@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('favoritos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('comentarios', function (Blueprint $table) {
+            $table->boolean('status')->default(false);
         });
     }
 
@@ -22,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('favoritos');
+        Schema::table('comentarios', function (Blueprint $table) {
+            $table->dropColumn('status');
+        });
     }
 };

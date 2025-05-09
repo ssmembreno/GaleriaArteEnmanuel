@@ -15,7 +15,7 @@ class PerfilController extends Controller
     {
         $usuario = Auth::user();
 
-        $favoritos = $usuario->favoritos()->with('obra')->get();
+        $favoritos = $usuario->favoritos;
 
         return view('ViewProfile', compact('usuario','favoritos'));
     }

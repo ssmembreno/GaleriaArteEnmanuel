@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Models\Controller;
 use App\Http\Requests\ComentsRequest;
 use App\Models\Comentario;
+use App\Models\Obra;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,8 @@ class ComentariosController extends Controller
      */
     public function index()
     {
-        //
+        $obras = Obra::with(['comentarios.user'])->get();
+        return view('admin.comentarios.HomeComentarios',compact('obras'));
     }
 
     /**
@@ -31,11 +33,11 @@ class ComentariosController extends Controller
      */
     public function store(ComentsRequest $request,$obraId)
     {
-        Comentario::create([
-           'contenido' => $request->input('contenido'),
-            'user_id' => Auth::id(),
-            'obra_id' => $obraId
-        ]);
+        $comentario = new Comentario();
+        $comentario->contenido = $request->contenido;
+        $comentario->obra_id = $obraId;
+        $comentario->user_id = auth()->id();
+        $comentario->save();
 
         return redirect()->back()->with('succes','Comentario agregado');
     }
@@ -69,6 +71,18 @@ class ComentariosController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $comentario = Comentario::findOrFail($id);
+        $comentario->delete();
+
+        return redirect()->back()->with('succes','Comentario eliminado');
+    }
+
+    public function aprobar($id){
+
+        $comentario = Comentario::findOrFail($id);
+        $comentario->status = 1;
+        $comentario->save();
+
+        return redirect()->back()->with('succes','Comentario aprobado');
     }
 }

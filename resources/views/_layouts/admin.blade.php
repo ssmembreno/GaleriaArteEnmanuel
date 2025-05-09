@@ -14,6 +14,7 @@
     <title>Galeria arte Enmanuel</title>
     <!-- Custom fonts for this template-->
     <link href="{{asset("admin-assets/vendor/fontawesome-free/css/all.min.css")}}" rel="stylesheet" type="text/css" >
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -67,6 +68,12 @@
                     <a class="collapse-item" href="{{route('obras.create')}}">Crear Obra</a>
                 </div>
             </div>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('comentarios.index')}}">
+                <i class="fa-solid fa-comments"></i>
+                <span>Comentarios</span></a>
         </li>
 
     </ul>

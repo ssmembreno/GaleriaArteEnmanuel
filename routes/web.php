@@ -1,21 +1,35 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\ComentariosController;
 use App\Http\Controllers\Backend\PerfilController;
 use App\Http\Controllers\Models\HomeController;
 use App\Http\Controllers\Backend\TipoObrasController;
 use App\Models\Obra;
+use App\Models\TipoObra;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class, 'home'])->name('inicio');
 
 Route::get('/artDetails/{id}',function($id){
-    $obra = Obra::with('comentarios','valoraciones')->findOrFail($id);
-    return view('galery.artDetails',compact('obra'));
+    $obra = Obra::with('comentarios')->findOrFail($id);
+
+    $obrasParaSlider = Obra::where('id', '!=', $id)
+        ->orderBy('id', 'desc')
+        ->take(5)
+        ->get();
+
+    return view('galery.artDetails',compact('obra','obrasParaSlider'));
 })->name('obraDetails');
 
-Route::get('/ aboutUs',function(){
+Route::get('/ObrasArte', function () {
+    $obras = Obra::all();
+    $tiposObra = TipoObra::all();
+    return view('galery.ObrasArte', compact('obras','tiposObra'));
+});
+
+Route::get('/aboutUs',function(){
     return view('aboutUs');
 });
 
@@ -58,6 +72,10 @@ Route::prefix('admin')->group(function(){
          Route::get('logout', [AdminController::class, 'logout'])->name('admin.logout'); //Logout
 
         Route::resource('obras', \App\Http\Controllers\Backend\obraController::class);
+
+        Route::get('comentarios', [ComentariosController::class, 'index'])->name('comentarios.index');
+        Route::patch('comentarios/{comentario}/aprobar', [ComentariosController::class, 'aprobar'])->name('comentarios.aprobar');
+        Route::delete('/comentarios/{comentario}', [\App\Http\Controllers\Backend\ComentariosController::class, 'destroy'])->name('comentarios.destroy');
 
     });
 });

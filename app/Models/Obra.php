@@ -48,6 +48,10 @@ class Obra extends Model
     }
 
     public function favoritos(){
-        return $this->hasMany(Favoritos::class);
+        return $this->belongsToMany(User::class, 'favoritos', 'obra_id', 'user_id');
+    }
+
+    public function comentarioAprobado(){
+        return $this->hasMany(Comentario::class)->where('status', true);
     }
 }

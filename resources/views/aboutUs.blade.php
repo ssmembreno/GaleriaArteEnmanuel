@@ -1,18 +1,18 @@
 @extends('_layouts/layout')
 
 @section('contentAboutUs')
-    <div class="container my-5">
-        <h2 class="text-center mb-4">Sobre Nosotros</h2>
-        <p class="text-center">Bienvenido a nuestra galería de arte, donde la creatividad y la pasión se encuentran. Nuestro objetivo es promover el talento artístico y ofrecer una plataforma para que los artistas muestren su trabajo.</p>
-        <div class="row">
-            <div class="col-md-6">
-                <h3>Nuestra Misión</h3>
-                <p>Fomentar el aprecio por el arte y apoyar a los artistas emergentes.</p>
-            </div>
-            <div class="col-md-6">
-                <h3>Nuestra Visión</h3>
-                <p>Convertirnos en un referente en la promoción del arte contemporáneo.</p>
-            </div>
+    <div class="about-hero">
+        <div class="about-hero-content">
+            @include('components.aboutUs.tittle')
+            @include('components.aboutUs.firma')
+        </div>
+
+        <div class="about-hero-image">
+            <img src="{{ asset('img/Enmanuel4.jpg') }}" alt="Enmanuel Membreño | artista hondureño | arte" title="Enmanuel Membreño">
         </div>
     </div>
-@endSection
+
+    <div class="about-description">
+        @include('components.aboutUs.descripcion')
+    </div>
+@endsection

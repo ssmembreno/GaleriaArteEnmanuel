@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <!-- HEADER -->
@@ -44,5 +46,6 @@
     <script src="{{asset('js/CardInfo.js')}}"></script>
     <script src="{{asset('js/Coments.js')}}"></script>
     <script src="{{asset('js/SliderDetails-preview.js')}}"></script>
+    <script src="{{asset('js/BurguerMenu.js')}}"></script>
 </body>
 </html>

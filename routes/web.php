@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\ComentariosController;
+use App\Http\Controllers\Backend\GeneroController;
 use App\Http\Controllers\Backend\PerfilController;
 use App\Http\Controllers\Models\HomeController;
 use App\Http\Controllers\Backend\TipoObrasController;
+use App\Models\Genero;
 use App\Models\Obra;
 use App\Models\TipoObra;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +28,8 @@ Route::get('/artDetails/{id}',function($id){
 Route::get('/ObrasArte', function () {
     $obras = Obra::all();
     $tiposObra = TipoObra::all();
-    return view('galery.ObrasArte', compact('obras','tiposObra'));
+    $generoObra = Genero::all();
+    return view('galery.ObrasArte', compact('obras','tiposObra','generoObra'));
 });
 
 Route::get('/aboutUs',function(){
@@ -56,6 +59,7 @@ Route::post('/favoritos/{obra}', [\App\Http\Controllers\Backend\FavoritosControl
 
 Route::get('/filtrar-obras', [HomeController::class, 'filtrarObras'])->name('filtrar.obras');
 
+Route::get('/generos',[GeneroController::class,'index'])->name('generos.index');
 /*
  ADMINISTRADOR
 */
@@ -94,14 +98,3 @@ Route::middleware('guest')->group(function(){
 //Logout
 Route::post('logout', [App\Http\Controllers\Login\LoginController::class, 'logout'])->name('logout');
 
-
-
-
-Route::get('crearUsuario',function(){
-   $user = new \App\Models\User();
-   $user->name = 'Samuel';
-   $user->apellido = 'Membreño';
-   $user->email = 'samuel@gmail.com';
-   $user->password = \Illuminate\Support\Facades\Hash::make('123456');
-   $user->save();
-});

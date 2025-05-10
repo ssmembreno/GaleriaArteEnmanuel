@@ -31,6 +31,7 @@ class CrearObraRequest extends FormRequest
             'imagenes.*' => 'nullable|image',
             'artista_id' => 'required|string',
             'tipo_obra_id' => 'required|string',
+            'genero_id' => 'required|string',
         ];
     }
 }

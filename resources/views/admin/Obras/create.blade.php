@@ -28,7 +28,16 @@
             </div>
 
             <div class="form-group">
-                <label for="tipo_obra_id">Tipo de Obra</label>
+                <label for="genero_id">Genero</label>
+                <select class="form-control" id="genero_id" name="genero_id" >
+                    @foreach($generoObra as $genero)
+                        <option value="{{ $genero->id }}">{{ $genero->nombre }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="tipo_obra_id">Técnica</label>
                 <select class="form-control" id="tipo_obra_id" name="tipo_obra_id" >
                     @foreach($tiposObra as $tipo)
                         <option value="{{ $tipo->id }}">{{ $tipo->nombre }}</option>

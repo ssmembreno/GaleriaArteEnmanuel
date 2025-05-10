@@ -23,15 +23,14 @@
                 </div>
             </div>
 
-            <!-- Tipo de obra -->
+            <!-- GENERO-->
             <div class="mb-3">
-                <label class="form-label">Tipo de obra</label>
-                <select class="form-select filtro" name="tipo_obra">
+                <label class="form-label">Genero</label>
+                <select class="form-select filtro" name="genero">
                     <option value="">Todas</option>
-                    <option value="Pintura">Pintura</option>
-                    <option value="Escultura">Escultura</option>
-                    <option value="Fotografía">Fotografía</option>
-                    <option value="Grabado">Grabado</option>
+                    @foreach($generoObra as $genero)
+                        <option value="{{ $genero->id }}">{{ $genero->nombre }}</option>
+                    @endforeach
                 </select>
             </div>
 

@@ -14,14 +14,17 @@ class HomeController extends Controller
 
     public function galeria(){
         $obras = \App\Models\Obra::all();
-        return view('galery.galeryArt', compact('obras'));
+        $generoObras = \App\Models\Genero::all();
+        $tiposObra = \App\Models\TipoObra::all();
+
+        return view('galery.galeryArt', compact('obras', 'generoObras', 'tiposObra'));
     }
 
     public function filtrarObras(Request $request){
         $query = Obra::query();
 
-        if ($request->filled('tipo_obra')) {
-            $query->where('tipo_obra', $request->tipo_obra);
+        if ($request->filled('genero')) {
+            $query->where('genero_id', $request->genero);
         }
 
         if ($request->filled('min_price')) {

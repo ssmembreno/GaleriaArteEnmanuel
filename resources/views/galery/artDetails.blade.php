@@ -24,6 +24,7 @@
     <!-- Modal de Login si no esta registrado para realizar acciones (comentarios/comentarios) -->
     @include('components.Detail.ModalLoginAccions')
 
+    @include('components.buttonScroll')
     <script>
         @if ($errors->has('email') || $errors->has('password'))
         // Espera a que cargue el DOM y abre el modal automáticamente

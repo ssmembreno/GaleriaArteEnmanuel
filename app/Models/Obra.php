@@ -21,7 +21,8 @@ class Obra extends Model
         'estado',
         'imagen',
         'artista_id',
-        'tipo_obra_id'
+        'tipo_obra_id',
+        'genero_id',
     ];
 
     //Relaciones a las tablas de artistas, tipoObras , imagenes_obra
@@ -53,5 +54,9 @@ class Obra extends Model
 
     public function comentarioAprobado(){
         return $this->hasMany(Comentario::class)->where('status', true);
+    }
+
+    public function genero(){
+        return $this->belongs(Genero::class);
     }
 }

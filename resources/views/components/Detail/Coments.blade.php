@@ -1,5 +1,5 @@
-<div class="container my-4">
-    <h3 class="title-obra-details title-comments">Envianos tu opinion de la obra</h3>
+<div class="container my-2">
+    <h3 class="title-obra-details title-comments">Envianos un comentario sobre la obra</h3>
     @auth
         <div id="mensaje-exito" class="alert alert-success d-none" role="alert">
             ¡Comentario enviado con éxito! Será visible tras ser aprobado.
@@ -16,7 +16,7 @@
 
     @guest
         <div class="d-flex justify-content-center">
-            <button class="boton-session-comments" data-bs-toggle="modal" data-bs-target="#loginModal">
+            <button class="boton-session-details" data-bs-toggle="modal" data-bs-target="#loginModal">
                 Iniciar sesión o registrarse
             </button>
         </div>
@@ -36,10 +36,6 @@
                             <p class="mt-2 mb-1">{{ $comentario->contenido }}</p>
                         </div>
                     </div>
-                    <button class="btn btn-link text-danger position-absolute top-0 end-0 mt-2 me-2 p-0 btn-eliminar-comentario"
-                            data-id="{{ $comentario->id }}">
-                        🗑
-                    </button>
                 </div>
                 @endif
             @endforeach

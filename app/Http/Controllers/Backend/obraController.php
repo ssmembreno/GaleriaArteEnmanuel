@@ -6,6 +6,7 @@ use App\Http\Controllers\Models\Controller;
 use App\Http\Requests\CrearObraRequest;
 use App\Http\Requests\EditObras;
 use App\Models\Artista;
+use App\Models\Genero;
 use App\Models\ImagenObra;
 use App\Models\Obra;
 use App\Models\tipoObra;
@@ -32,7 +33,8 @@ class obraController extends Controller
     {
         $artistas = Artista::all();
         $tiposObra = TipoObra::all();
-        return view('admin.obras.create',compact('artistas','tiposObra'));
+        $generoObra = Genero::all();
+        return view('admin.obras.create',compact('artistas','tiposObra','generoObra'));
     }
 
     /**
@@ -49,6 +51,7 @@ class obraController extends Controller
         $obra->estado = $request->input('estado');
         $obra->artista_id = $request->input('artista_id');
         $obra->tipo_obra_id = $request->input('tipo_obra_id');
+        $obra->genero_id = request('genero_id');
 
         //Se maneja la subida de la imagen principal
         if($request->hasFile('imagen')){

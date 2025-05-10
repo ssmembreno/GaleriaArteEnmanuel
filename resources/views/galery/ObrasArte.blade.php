@@ -13,6 +13,8 @@
             </div>
         </div>
     </div>
+
+    @include('components.buttonScroll')
 @endsection
 
 <script>

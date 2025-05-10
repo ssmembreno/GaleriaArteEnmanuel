@@ -18,10 +18,12 @@
             </div>
         </div>
 
+        <hr style="width:100%;">
+
+
         <h5 class="mt-4">Descripción</h5>
         <p>{{ $obra->descripcion }}</p>
 
-        <h5 class="mt-4">Detalles</h5>
         <div class="row mb-2">
             <div class="col-6 fw-bold">Precio:</div>
             <div class="col-6">{{ number_format($obra->precio, 2)}}$</div>
@@ -43,11 +45,15 @@
             </div>
         </div>
 
-        <div class="extra-info p-3 bg-light rounded shadow-sm mt-3 small">
-            <p>🚚 <strong>Shipping by ArtMajour</strong></p>
-            <p>📦 Ships from France within 2 business days</p>
-            <p>🔄 14-day return policy</p>
-            <p>🔒 100% secure transaction</p>
+        <hr style="width:100%;">
+        <div class="info-box bg-light p-3 rounded mt-4 shadow-sm" style="font-family: Cal Sans, sans-serif;">
+            <h6 class="fw-bold mb-3">Información extra de la obra</h6>
+            <ul class="list-unstyled mb-0">
+                <li class="mb-1">🎨 Obra original y única</li>
+                <li class="mb-1">📩 Contacta con el artista para más detalles</li>
+                <li class="mb-1">📷 Imágenes reales de alta calidad</li>
+                <li class="mb-1">✅ Compra segura directamente con el artista</li>
+            </ul>
         </div>
     </div>
 </div>

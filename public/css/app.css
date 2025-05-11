@@ -2,6 +2,9 @@
 
 body, html {
     overflow-x: hidden;
+    margin: 0;
+    height: 100%;
+    padding: 0;
 }
 
 html {
@@ -9,6 +12,16 @@ html {
 }
 *{
     font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main, .content {
+    flex: 1;
 }
 
 #btn-scroll-top {
@@ -158,7 +171,60 @@ html {
         height: 72px;
     }
 }
-/*SLider HOME*/
+
+/**************FOOTER*****************/
+.footer-custom {
+    background-color: #0e0e1a;
+    color: #ffffff;
+    font-size: 0.95rem;
+}
+
+.footer-custom h5, .footer-custom h6 {
+    color: #ffffff;
+    margin-bottom: 0.7rem;
+}
+
+.footer-custom a {
+    text-decoration: none;
+    color: #ffffff;
+    transition: color 0.2s ease;
+}
+
+.footer-custom a:hover {
+    color: #5ec916;
+}
+
+.footer-custom .footer-text {
+    color: #ffffff;
+    font-size: 0.9rem;
+    max-width: 300px;
+}
+
+.contact-form {
+    background-color: dodgerblue;
+    color: white;
+    border-radius: 35px;
+}
+
+.contact-form:hover {
+    background-color: #5ec916;
+    color: white;
+
+}
+
+.container-footer{
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+.copyrigth{
+    color: white;
+}
+
+
+    /*************************SLider HOME******************/
 .slider {
     min-height: 100vh;
     position: relative;
@@ -191,10 +257,6 @@ html {
     position: absolute;
     left: 0;
     bottom: 0;
-    /*background-image: linear-gradient(
-        to top, #000000 10px,transparent
-    );
-    */
 }
 .slider .list .item .content{
     position: absolute;
@@ -301,6 +363,7 @@ html {
     align-items: center;
     justify-content: center;
     margin-bottom: 30px;
+
 }
 
 .tarjeta {
@@ -352,7 +415,7 @@ html {
 
 .nota-img img {
     width: 300px;
-    height: auto;
+    height: 330px;
     border-radius: 10px;
     object-fit: cover;
     display: block;
@@ -1463,11 +1526,11 @@ form.mb-4 button.btn-comments{
 }
 
 
-      /*************************MEDIA PARA EL SLIDER DEL HOME*************************/
+      /*************************MEDIA SLIDER DEL HOME*************************/
 @media screen and (max-width: 1024px) {
     .slider {
         height: auto;
-        min-height: 500px; /* Ajusta según tu diseño */
+        min-height: 500px;
         overflow: hidden;
         padding-bottom: 0;
         margin-bottom: 0;
@@ -1499,15 +1562,13 @@ form.mb-4 button.btn-comments{
         letter-spacing: 5px;
         font-size: 0.9rem;
     }
-    .scroll-down-indicator {
-        display: none;
-    }
+
 }
 
 @media screen and (max-width: 768px) {
         .slider {
             height: auto;
-            min-height: 400px; /* o el valor justo que necesites */
+            min-height: 400px;
         }
 
         .slider .list .item {
@@ -1576,10 +1637,6 @@ form.mb-4 button.btn-comments{
 
 /********************MEDIA CARD INFO HOME*************************/
 @media (max-width: 992px) {
-    .nota-container {
-        height: 100vh;
-        margin-top: 25px;
-    }
 
     .tarjeta {
         width: 91vw;
@@ -1587,8 +1644,8 @@ form.mb-4 button.btn-comments{
     }
 
     .tarjeta::after {
-        width: 89vw; /* Más grande (antes 86vw) */
-        min-height: 690px; /* Más alto (antes 570px) */
+        width: 89vw;
+        min-height: 690px;
     }
 
     .contenido-tarjeta {
@@ -1602,7 +1659,8 @@ form.mb-4 button.btn-comments{
     }
 
     .nota-img img {
-        width: 85%;
+        width: 100%;
+        height: 240px;
         max-width: 330px;
     }
 
@@ -1613,6 +1671,13 @@ form.mb-4 button.btn-comments{
     .nota-btn {
         align-self: center;
     }
+
+    .container-footer{
+        margin-top: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1622,7 +1687,7 @@ form.mb-4 button.btn-comments{
     }
 
     .tarjeta::after {
-        width: 95vw; /* Más grande */
+        width: 95vw;
         min-height: 710px;
     }
 
@@ -1659,8 +1724,13 @@ form.mb-4 button.btn-comments{
         padding: 0.7rem 1.4rem;
         align-self: center;
     }
-}
 
+    .container-footer{
+        margin-top: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
 /***************About US*******************/
 
 .about-hero {
@@ -1776,6 +1846,56 @@ form.mb-4 button.btn-comments{
     font-size: 0.85rem;
     text-transform: uppercase;
 }
+
+
+/* Social CARDS*/
+.social-card {
+    border: none;
+    border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.social-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.social-card img {
+    width: 60px;
+    transition: transform 0.3s ease;
+}
+
+.social-card:hover img {
+    transform: scale(1.1);
+}
+
+.social-card h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.contact-details {
+    border-radius: 30px;
+    font-weight: 500;
+    padding: 0.5rem 1.5rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-details:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Título centrado con estilo */
+.title-social {
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+
 @media (max-width: 1200px) {
     .about-us-title {
         font-size: 4.5rem;
@@ -1795,6 +1915,13 @@ form.mb-4 button.btn-comments{
     .about-description-right blockquote {
         font-size: 1rem;
         text-align: justify;
+    }
+
+    .container-footer{
+        margin-top: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 20px;
     }
 }
 
@@ -2010,5 +2137,8 @@ form.mb-4 button.btn-comments{
         gap: 0.3rem;
     }
 }
+
+
+/********************BLOG NOTICIAS*******************/
 
 

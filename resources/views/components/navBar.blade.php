@@ -25,7 +25,7 @@
             <li class="nav-item"><a class="nav-link" href="{{url('/')}}">Inicio</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url('ObrasArte')}}">Obras de arte</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url('aboutUs')}}">Artista</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{url('eventsNews')}}">Eventos</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url('events')}}">Eventos</a></li>
             <li class="nav-item"><a class="nav-link" href="{{url('contactUs')}}">Contacto</a></li>
 
             @guest

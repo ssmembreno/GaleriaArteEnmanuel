@@ -1,0 +1,79 @@
+.contact-section {
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.contact-info-Contac li {
+    margin-bottom: 15px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+}
+
+.contact-info i {
+    font-size: 20px;
+    color: #007BFF;
+}
+
+.contact-form-contac input,
+.contact-form-contac textarea {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 15px;
+    background-color: #fff;
+}
+
+.contact-form-contac label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.contact-form-contac .btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.contact-form-contac input.form-control,
+.contact-form-contac textarea.form-control {
+    border: none;
+    border-bottom: 2px solid #e0e0e0;
+    border-radius: 0;
+    background-color: white;
+    box-shadow: none;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form-contac input.form-control:focus,
+.contact-form-contac textarea.form-control:focus {
+    outline: none;
+    box-shadow: none;
+    border-bottom: 2px solid #007BFF;
+}
+
+.contact-title{
+    text-align: center;
+    font-size: 6rem;
+    font-weight: 500;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: #111;
+    margin-bottom: 70px;
+    font-family: 'Anton', sans-serif;
+}
+
+
+@media (max-width: 768px){
+
+    .contact-title{
+        font-size: 3.5rem;
+        margin-bottom: 70px;
+    }
+
+}

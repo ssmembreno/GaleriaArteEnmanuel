@@ -2,7 +2,7 @@
     <div class="tarjeta">
         <div class="contenido-tarjeta">
             <div class="nota-img">
-                <img src="{{asset('img/EnmanuelInfo.jpg')}}" alt="Enmanuel Membreño">
+                <img src="{{asset('img/EnmanuelInfo.webp')}}" alt="Enmanuel Membreño">
             </div>
             <div class="nota-contenido">
                 <h2 class="nota-titulo">Enmanuel Membreño</h2>

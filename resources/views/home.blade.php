@@ -6,4 +6,7 @@
     @include('components.CardInformation')
 
     @include('components.cards')
+
+    @include('components.buttonScroll')
+
 @endsection

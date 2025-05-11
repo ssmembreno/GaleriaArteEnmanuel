@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\ComentariosController;
+use App\Http\Controllers\Backend\EventosController;
 use App\Http\Controllers\Backend\GeneroController;
 use App\Http\Controllers\Backend\PerfilController;
 use App\Http\Controllers\Models\HomeController;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home'])->name('inicio');
 
+//Trae la obra por id de cada obra
 Route::get('/artDetails/{id}',function($id){
     $obra = Obra::with('comentarios')->findOrFail($id);
 
@@ -25,6 +27,7 @@ Route::get('/artDetails/{id}',function($id){
     return view('galery.artDetails',compact('obra','obrasParaSlider'));
 })->name('obraDetails');
 
+//Muestra todas la obras publicadas
 Route::get('/ObrasArte', function () {
     $obras = Obra::all();
     $tiposObra = TipoObra::all();
@@ -40,8 +43,10 @@ Route::get('/contactUs',function(){
     return view('contactUs');
 });
 
-Route::get('eventsNews',function(){
-    return view('eventsNews');
+Route::get('events',function(){
+    $eventos = \App\Models\evento::all();
+    return view('eventsNews',compact('eventos'));
+
 });
 
 Route::get('/galeria',[HomeController::class,'galeria']);
@@ -77,10 +82,18 @@ Route::prefix('admin')->group(function(){
 
         Route::resource('obras', \App\Http\Controllers\Backend\obraController::class);
 
+        //comentarios
         Route::get('comentarios', [ComentariosController::class, 'index'])->name('comentarios.index');
         Route::patch('comentarios/{comentario}/aprobar', [ComentariosController::class, 'aprobar'])->name('comentarios.aprobar');
         Route::delete('/comentarios/{comentario}', [\App\Http\Controllers\Backend\ComentariosController::class, 'destroy'])->name('comentarios.destroy');
 
+        //Eventos
+        Route::get('eventos',[EventosController::class,'index'])->name('evento.index');
+        Route::get('eventos/crear', [\App\Http\Controllers\Backend\EventosController::class, 'create'])->name('eventos.create');
+        Route::post('eventos', [\App\Http\Controllers\Backend\EventosController::class, 'store'])->name('eventos.store');
+        Route::get('/eventos/{evento}/editar', [EventosController::class, 'edit'])->name('eventos.edit');
+        Route::put('/eventos/{evento}', [EventosController::class, 'update'])->name('eventos.update');
+        Route::delete('/eventos/{evento}', [EventosController::class, 'destroy'])->name('eventos.destroy');
     });
 });
 

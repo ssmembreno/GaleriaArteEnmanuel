@@ -71,11 +71,25 @@
         </li>
 
         <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEventos"
+               aria-expanded="true" aria-controls="collapseEventos">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Eventos</span>
+            </a>
+            <div id="collapseEventos" class="collapse" aria-labelledby="headingEventos" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Gestión de eventos</h6>
+                    <a class="collapse-item" href="{{ route('evento.index') }}">Ver Eventos</a>
+                    <a class="collapse-item" href="{{ route('eventos.create') }}">Crear Evento</a>
+                </div>
+            </div>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link" href="{{route('comentarios.index')}}">
                 <i class="fa-solid fa-comments"></i>
                 <span>Comentarios</span></a>
         </li>
-
     </ul>
     <!-- End of Sidebar -->
 

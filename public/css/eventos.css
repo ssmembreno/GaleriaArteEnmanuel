@@ -1,0 +1,161 @@
+.neon-events-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.neon-events-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    height: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.neon-events-header {
+    margin-bottom: 2rem;
+}
+
+.Events-title {
+    font-size: 6rem;
+    font-weight: 500;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: #111;
+    font-family: 'Anton', sans-serif;
+}
+
+.neon-events-title {
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.neon-event-card {
+    display: flex;
+    background: white;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    height: 300px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform: translateY(0);
+    position: relative;
+    z-index: 1;
+}
+
+.neon-event-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+    z-index: 2;
+}
+
+.neon-event-image {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 16px;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.neon-event-card:hover .neon-event-image {
+    transform: scale(1.02);
+}
+
+.neon-event-content {
+    padding: 1.2rem 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.neon-event-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #000;
+    line-height: 1.3;
+}
+
+.neon-event-title span {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.neon-event-description {
+    color: #666;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+    font-size: 0.9rem;
+}
+
+.neon-event-details {
+    margin-top: 20px;
+}
+
+.neon-event-detail {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.neon-event-detail i {
+    margin-right: 0.6rem;
+    color: #666;
+    width: 20px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .neon-event-card {
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+    }
+
+    .neon-event-image {
+        width: 100%;
+        height: 360px;
+        object-fit: contain;
+    }
+
+    .neon-event-content {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .neon-event-title span,
+    .neon-event-description,
+    .neon-event-detail {
+        text-align: center;
+    }
+
+    .neon-event-detail {
+        justify-content: center;
+    }
+
+    .neon-event-card:hover {
+        transform: translateY(-5px);
+    }
+}

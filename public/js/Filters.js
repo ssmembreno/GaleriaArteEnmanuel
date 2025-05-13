@@ -50,9 +50,25 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(html => {
                 contenedor.innerHTML = html;
                 inicializarBotonesFavoritos()
+                inicializarMasonry()
             })
             .catch(error => {
                 console.error('Error al filtrar obras:', error);
             });
     }
 });
+
+function inicializarMasonry() {
+    const grid = document.querySelector('#masonry-grid');
+    if (!grid) return;
+
+    const msnry = new Masonry(grid, {
+        itemSelector: '.col-12',
+        percentPosition: true
+    });
+
+    imagesLoaded(grid).on('progress', () => {
+        msnry.layout();
+    });
+}
+

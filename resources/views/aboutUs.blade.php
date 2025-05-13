@@ -19,5 +19,4 @@
         @include('components.aboutUs.socialCards')
     </div>
 
-    @include('components.buttonScroll')
 @endsection

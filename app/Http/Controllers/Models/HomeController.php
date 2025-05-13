@@ -45,7 +45,7 @@ class HomeController extends Controller
             });
         }
 
-        $obras = $query->get();
+        $obras = $query->orderBy('created_at', 'desc')->get();
 
         return view('galery.CardsImagesArt', compact('obras'))->render();
 

@@ -1,4 +1,4 @@
-<footer class="footer-custom py-1">
+<footer class="footer-custom">
     <div class="container-footer">
         <div class="row g-4 flex-wrap justify-content-between align-items-start">
 
@@ -14,11 +14,11 @@
             <div class="col-6 col-sm-6 col-lg-2">
                 <h6 class="fw-semibold">Páginas</h6>
                 <ul class="list-unstyled mt-2">
-                    <li class="mb-1"><a href="#">Inicio</a></li>
-                    <li class="mb-1"><a href="#">Obras de arte</a></li>
-                    <li class="mb-1"><a href="#">Artista</a></li>
-                    <li class="mb-1"><a href="#">Eventos</a></li>
-                    <li class="mb-1"><a href="#">Contacto</a></li>
+                    <li class="mb-1"><a href="{{url('/')}}">Inicio</a></li>
+                    <li class="mb-1"><a href="{{url('/ObrasArte')}}">Obras de arte</a></li>
+                    <li class="mb-1"><a href="{{url('/aboutUs')}}">Artista</a></li>
+                    <li class="mb-1"><a href="{{url('/events')}}">Eventos</a></li>
+                    <li class="mb-1"><a href="{{url('/contactUs')}}">Contacto</a></li>
                 </ul>
             </div>
 
@@ -47,8 +47,9 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-4">
-            <div class="col text-center mt-3">
+        <hr style="width: 100%;">
+        <div class="row">
+            <div class="col text-center mb-1">
                 <p class="copyrigth">Samuel Membreño &copy; Galería de Arte Enmanuel Membreño - {{ date('Y') }}</p>
             </div>
         </div>

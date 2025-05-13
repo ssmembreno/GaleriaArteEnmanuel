@@ -1,41 +1,69 @@
 @extends('_layouts.logins')
 
 @section('content')
-    <div class="p-5">
-        <div class="text-center">
-            <h1 class="h4 text-gray-900 mb-4">Bienvenido a Galeria de arte Enmanuel</h1>
-        </div>
-        @include('_includes.Modules') {{-- usa punto en lugar de slash --}}
-        <form class="user" action="{{ action([\App\Http\Controllers\Login\LoginController::class, 'login']) }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <input name="email" type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Enter Email Address..." autocomplete="off">
+    <div class="login-wrapper">
+        <div class="login-box">
+            <div class="login-logo">
+                <img src="{{ asset('img/logo.png') }}" alt="Logo">
             </div>
-            <div class="form-group">
-                <input name="password" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" autocomplete="off">
-            </div>
-            <div class="form-group">
-                <div class="custom-control custom-checkbox small">
-                    <input type="checkbox" class="custom-control-input" id="customCheck">
-                    <label class="custom-control-label" for="customCheck">Remember Me</label>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
+            <div class="login-title">¡Bienvenido!</div>
+            <div class="login-subtitle">Introduce tus datos para continuar</div>
 
-            <hr>
-            <a href="index.html" class="btn btn-google btn-user btn-block">
-                <i class="fab fa-google fa-fw"></i> Login with Google
-            </a>
-            <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-            </a>
-        </form>
-        <hr>
-        <div class="text-center">
-            <a class="small" href="forgot-password.html">Forgot Password?</a>
-        </div>
-        <div class="text-center">
-            <a class="small" href="register.html">Create an Account!</a>
+            <div class="toggle-buttons mb-4">
+                <button id="btn-login" class="active" onclick="toggleForm('login')" type="button">Iniciar sesión</button>
+                <button id="btn-register" onclick="toggleForm('register')" type="button">Crear cuenta</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="form-login" action="{{ action([\App\Http\Controllers\Login\LoginController::class, 'login']) }}" method="POST">
+                @csrf
+                <div class="input-group-custom">
+                    <i class="fas fa-envelope"></i>
+                    <input name="email" type="email" class="form-control-custom" placeholder="Correo electrónico" required autocomplete="off">
+                </div>
+                <div class="input-group-custom">
+                    <i class="fas fa-lock"></i>
+                    <input name="password" type="password" class="form-control-custom" placeholder="Contraseña" required autocomplete="off">
+                </div>
+                <button type="submit" class="btn-continue mt-2">Continuar</button>
+            </form>
+
+            <!-- formulario de registro-->
+            <form id="form-register" style="display:none" action="{{action([\App\Http\Controllers\Login\RegisterController::class,'register'])}}" method="POST">
+                @csrf
+                <div class="input-group-custom">
+                    <i class="fas fa-user"></i>
+                    <input name="name" type="text" class="form-control-custom" placeholder="Nombre" autocomplete="off">
+                </div>
+                <div class="input-group-custom">
+                    <i class="fas fa-user"></i>
+                    <input name="apellido" type="text" class="form-control-custom" placeholder="Apellido" autocomplete="off">
+                </div>
+                <div class="input-group-custom">
+                    <i class="fas fa-envelope"></i>
+                    <input name="email" type="email" class="form-control-custom" placeholder="Correo electrónico" autocomplete="off">
+                </div>
+                <div class="input-group-custom">
+                    <i class="fas fa-lock"></i>
+                    <input name="password" type="password" class="form-control-custom" placeholder="Contraseña" autocomplete="off">
+                </div>
+                <div class="input-group-custom">
+                    <i class="fas fa-lock"></i>
+                    <input name="password_confirmation" type="password" class="form-control-custom" placeholder="Confirmar contraseña" autocomplete="off">
+                </div>
+                <button type="submit" class="btn-continue mt-2">Regístrate</button>
+            </form>
+
+            <div class="divider"><span>O continúa con</span></div>
+
+            <div class="social-icons">
+                <a href="http://127.0.0.1:8000/auth/google/redirect"><img src="{{asset('img/icons/google.png')}}" alt="Google"></a>
+            </div>
+
+            <div class="footer-note">
+                Únete a los amantes del arte que ya descubren nuevas emociones a través de nuestras obras. Inicia sesión para explorar la galería, guardar tus favoritas y compartir la inspiración con el mundo.
+            </div>
+
         </div>
     </div>
 @endsection

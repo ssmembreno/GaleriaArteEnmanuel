@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Models\Controller;
+use App\Models\Obra;
 use Illuminate\Http\Request;
 
 class FavoritosController extends Controller
@@ -10,9 +11,17 @@ class FavoritosController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $obras = Obra::filtrosAplicados($request)->get();
+
+        $favoritosIds = [];
+
+        if (auth()->check()) {
+            $favoritosIds = auth()->user()->favoritos()->pluck('obra_id')->toArray();
+        }
+
+        return view('galery.ObrasArte', compact('obras', 'favoritosIds'));
     }
 
     /**

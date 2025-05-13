@@ -24,13 +24,6 @@ main, .content {
     flex: 1;
 }
 
-#btn-scroll-top {
-    font-size: 25px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: opacity 0.3s ease;
-    background-color: #5ec916;
-    color: white;
-}
 
 /************HEADER Loyaout****************/
 .custom-header {
@@ -216,7 +209,7 @@ main, .content {
     margin-top: 20px;
     margin-left: 10px;
     margin-right: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .copyrigth{
@@ -655,6 +648,14 @@ main, .content {
     100% { transform: translateY(0); }
 }
 
+.obra-hover-group img {
+    transition: transform 0.5s ease;
+    transform-origin: center center;
+}
+
+.obra-hover-group:hover img {
+    transform: scale(0.95);
+}
 .sphere,
 .mini-sphere,
 .extra-shape,
@@ -1921,7 +1922,7 @@ form.mb-4 button.btn-comments{
         margin-top: 20px;
         margin-left: 10px;
         margin-right: 10px;
-        margin-bottom: 20px;
+        margin-bottom: 0px;
     }
 }
 
@@ -2136,6 +2137,7 @@ form.mb-4 button.btn-comments{
         align-items: center;
         gap: 0.3rem;
     }
+
 }
 
 

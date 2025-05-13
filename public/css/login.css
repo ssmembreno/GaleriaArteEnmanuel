@@ -1,0 +1,241 @@
+body {
+    background: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-logo img {
+    width: 120px;
+    margin-bottom: 30px;
+}
+
+.login-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.login-subtitle {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.toggle-buttons {
+    display: flex;
+    justify-content: center;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    overflow: hidden;
+    width: 98%;
+}
+
+.toggle-buttons button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: none;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.toggle-buttons .active {
+    background-color: #fff;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.form-control-custom {
+    width: 80%;
+    padding: 14px 20px 14px 45px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    position: relative;
+}
+
+.input-group-custom {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group-custom i {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #555;
+}
+
+.btn-continue {
+    width: 100%;
+    background-color: #0066ff;
+    border: none;
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+    border-radius: 12px;
+    padding: 12px;
+    transition: 0.3s ease;
+}
+
+.btn-continue:hover {
+    background-color: #0052cc;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 30px 0 20px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #ddd;
+}
+
+.divider span {
+    margin: 0 10px;
+    font-size: 12px;
+    color: #888;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.social-icons a {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #f2f2f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #333;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    background: #e0e0e0;
+}
+
+.footer-note {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.toggle-buttons {
+    display: flex;
+    justify-content: center;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+    transition: 0.3s;
+}
+
+.toggle-btn.active {
+    background-color: #fff;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+
+.toggle-buttons .toggle-btn.active {
+    background-color: #fff;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+
+@media (min-width: 820px) and (max-width: 1180px) {
+    .login-box {
+        max-width: 500px;
+        padding: 0 30px;
+    }
+
+    .login-logo img {
+        width: 150px;
+        margin-bottom: 40px;
+    }
+
+    .login-title {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .login-subtitle {
+        font-size: 17px;
+        margin-bottom: 30px;
+    }
+
+    .toggle-buttons button {
+        font-size: 16px;
+        padding: 12px 0;
+    }
+
+    .form-control-custom {
+        font-size: 17px;
+        padding: 18px 26px 18px 52px;
+        border-radius: 14px;
+    }
+
+    .input-group-custom i {
+        font-size: 18px;
+        left: 18px;
+    }
+
+    .btn-continue {
+        font-size: 17px;
+        padding: 16px;
+        border-radius: 14px;
+    }
+
+    .divider span {
+        font-size: 14px;
+    }
+
+    .social-icons a {
+        width: 52px;
+        height: 52px;
+        font-size: 22px;
+    }
+
+    .footer-note {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+}

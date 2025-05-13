@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Models\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -57,7 +58,23 @@ class PerfilController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'password' => 'nullable|string|min:6',
+        ]);
+
+        $usuario = User::findOrFail($id);
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+
+        if ($request->filled('password')) {
+            $usuario->password = bcrypt($request->password);
+        }
+
+        $usuario->save();
+
+        return redirect()->back()->with('success', 'Datos actualizados correctamente.');
     }
 
     /**

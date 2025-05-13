@@ -7,6 +7,5 @@
 
     @include('components.cards')
 
-    @include('components.buttonScroll')
 
 @endsection

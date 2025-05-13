@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller
 {
     public function registerForm(){
-        return view('auth.register');
+        return view('auth.login');
     }
 
     public function register(Request $request){
@@ -30,5 +30,10 @@ class RegisterController extends Controller
 
         auth()->login($user);
         return redirect()->route('inicio');
+    }
+
+    public function registerFormlog()
+    {
+        return view('auth.login', ['isRegistering' => true]);
     }
 }

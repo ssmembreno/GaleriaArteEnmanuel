@@ -28,8 +28,9 @@ function inicializarBotonesFavoritos() {
             icon.classList.add('fa-regular');
         }
 
+        // El modal se abre solo si no está logueado
         button.addEventListener('click', function (e) {
-            if (!isAuth) return; // El modal se abre solo si no está logueado
+            if (!isAuth) return;
 
             e.preventDefault();
 
@@ -65,7 +66,7 @@ function inicializarBotonesFavoritos() {
     });
 }
 
-// Ejecutar al cargar la página
+// se ejecuta al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     inicializarBotonesFavoritos();
 });

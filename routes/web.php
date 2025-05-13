@@ -4,13 +4,18 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\ComentariosController;
 use App\Http\Controllers\Backend\EventosController;
 use App\Http\Controllers\Backend\GeneroController;
+use App\Http\Controllers\Backend\GoogleController;
 use App\Http\Controllers\Backend\PerfilController;
 use App\Http\Controllers\Models\HomeController;
 use App\Http\Controllers\Backend\TipoObrasController;
 use App\Models\Genero;
 use App\Models\Obra;
 use App\Models\TipoObra;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Hash;
 
 
 Route::get('/', [HomeController::class, 'home'])->name('inicio');
@@ -29,10 +34,12 @@ Route::get('/artDetails/{id}',function($id){
 
 //Muestra todas la obras publicadas
 Route::get('/ObrasArte', function () {
-    $obras = Obra::all();
+    $obras = Obra::orderBy('created_at', 'desc')->take(45)->get();
     $tiposObra = TipoObra::all();
     $generoObra = Genero::all();
-    return view('galery.ObrasArte', compact('obras','tiposObra','generoObra'));
+    $favoritosIds = auth()->check() ? auth()->user()->favoritos()->pluck('obra_id')->toArray() : [];
+
+    return view('galery.ObrasArte', compact('obras','tiposObra','generoObra','favoritosIds'));
 });
 
 Route::get('/aboutUs',function(){
@@ -104,8 +111,17 @@ Route::middleware('guest')->group(function(){
      Route::post('login', [App\Http\Controllers\Login\LoginController::class, 'login'])->name('login');
 
      //Register
-    Route::get('register', [App\Http\Controllers\Login\RegisterController::class, 'registerForm'])->name('register');
+    Route::get('register', [App\Http\Controllers\Login\RegisterController::class, 'registerFormlog'])->name('register.form');
     Route::post('register', [App\Http\Controllers\Login\RegisterController::class, 'register'])->name('register');
+
+    //Login Google
+    Route::get('/auth/google/redirect', [GoogleController::class, 'redirect'])->name('google.redirect');
+
+    Route::get('/auth/google/callback', [GoogleController::class, 'callback'])->name('google.callback');
+
+    //Modificacion de datos
+    Route::put('/usuario/{id}', [PerfilController::class, 'update'])->name('usuario.update');
+
 });
 
 //Logout

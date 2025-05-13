@@ -2,8 +2,12 @@
 
 @section('contentContactUs')
 
-    @include('components.contacto.contact')
+    <div id="particles-js"></div>
+    <div>
+        @include('components.contacto.contact')
 
-    @include('components.buttonScroll')
+        @include('components.buttonScroll')
+
+    </div>
 
 @endSection

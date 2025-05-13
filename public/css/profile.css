@@ -1,0 +1,114 @@
+.profile-container {
+    max-width: 1000px;
+    margin: 3rem auto;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #eee;
+}
+
+.profile-info {
+    padding-left: 2rem;
+}
+
+
+.favoritos-section {
+    margin-top: 2rem;
+}
+
+.obra-card {
+    border-radius: 12px;
+    padding: 1rem;
+    background: transparent;
+}
+
+.obra-img-wrapper img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.obra-info small {
+    color: #777;
+}
+
+.form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-label.required::after {
+    content: "*";
+    color: red;
+    margin-left: 4px;
+}
+
+.form-control {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    box-shadow: none;
+    transition: all 0.2s ease;
+    padding-left: 0;
+}
+
+.form-control:focus {
+    border-bottom: 1px solid #5ec916;
+    box-shadow: none;
+    background-color: transparent;
+}
+
+.btn-rounded {
+    background-color: #2196F3;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 0.6rem 1.8rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-rounded:hover {
+    background-color: #5ec916;
+    color: white;
+    border: solid 2px #5ec916;
+}
+
+.collapse-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 12px 0;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.collapse-toggle:hover {
+    background-color: #f6f6f6;
+}
+
+.collapse-toggle h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    transition: color 0.2s ease;
+}
+
+
+.collapse-arrow {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+    padding: 4px;
+}
+
+.collapse.show ~ .collapse-toggle .collapse-arrow {
+    transform: rotate(180deg);
+}

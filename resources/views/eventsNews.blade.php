@@ -3,5 +3,4 @@
 @section('contentEventsNews')
     @include('components.Events.events')
 
-    @include('components.buttonScroll')
 @endsection

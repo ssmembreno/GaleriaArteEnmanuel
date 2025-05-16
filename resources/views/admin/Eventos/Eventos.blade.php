@@ -20,19 +20,11 @@
                         <th>Fecha</th>
                         <th>Horario</th>
                         <th>Ubicación</th>
+                        <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
                     </thead>
                     <tfoot>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Fecha</th>
-                        <th>Horario</th>
-                        <th>Ubicación</th>
-                        <th>Acciones</th>
-                    </tr>
                     </tfoot>
                     <tbody>
                     @foreach($eventos as $evento)
@@ -43,6 +35,7 @@
                             <td>{{ \Carbon\Carbon::parse($evento->fecha)->format('d/m/Y') }}</td>
                             <td>{{ $evento->hora_inicio }} - {{ $evento->hora_fin }}</td>
                             <td>{{ $evento->ubicacion }}</td>
+                            <td>{{$evento->estado}}</td>
                             <td class="mt-3">
                                 <a href="{{ route('eventos.edit', $evento->id) }}" class="btn btn-warning btn-icon-split mb-1">
                                     <span class="text"><i class="fa-solid fa-pen"></i></span>

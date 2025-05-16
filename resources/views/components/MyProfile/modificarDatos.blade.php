@@ -15,6 +15,11 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="name" class="form-label">Apellido</label>
+                    <input type="text" name="apellido" id="apellido" value="{{ old('apellido', $usuario->apellido) }}" class="form-control">
+                </div>
+
+                <div class="mb-3">
                     <label for="email" class="form-label">Correo electrónico</label>
                     <input type="email" name="email" id="email" value="{{ old('email', $usuario->email) }}" class="form-control">
                 </div>

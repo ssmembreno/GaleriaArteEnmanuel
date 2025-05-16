@@ -14,6 +14,7 @@
                 <button id="btn-register" onclick="toggleForm('register')" type="button">Crear cuenta</button>
             </div>
 
+            @include('_includes.Modules')
             <!-- Login Form -->
             <form id="form-login" action="{{ action([\App\Http\Controllers\Login\LoginController::class, 'login']) }}" method="POST">
                 @csrf
@@ -60,10 +61,17 @@
                 <a href="http://127.0.0.1:8000/auth/google/redirect"><img src="{{asset('img/icons/google.png')}}" alt="Google"></a>
             </div>
 
-            <div class="footer-note">
-                Únete a los amantes del arte que ya descubren nuevas emociones a través de nuestras obras. Inicia sesión para explorar la galería, guardar tus favoritas y compartir la inspiración con el mundo.
+            <div class="text-center mt-4 mb-4">
+                <a href="{{ url('/') }}" class="btn-continue text-decoration-none"
+                   style="text-decoration: none; background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 10px 20px; border-radius: 5px; transition: all 0.3s;">
+                    ← Volver a la galería
+                </a>
             </div>
 
+
+            <div class="footer-note mt-5">
+                Únete a los amantes del arte que ya descubren nuevas emociones a través de nuestras obras. Inicia sesión para explorar la galería, guardar tus favoritas y compartir la inspiración con el mundo.
+            </div>
         </div>
     </div>
 @endsection

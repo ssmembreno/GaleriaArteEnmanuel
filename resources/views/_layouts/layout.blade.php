@@ -31,6 +31,12 @@
         @yield('contentEventsNews')
     </main>
 
+    <a href="https://wa.me/+50496432644"
+       class="whatsapp-float"
+       target="_blank"
+       title="¿Necesitas ayuda? Chatea con nosotros por WhatsApp">
+        <img src="{{ asset('img/icons/whatsapp.png') }}" alt="WhatsApp" />
+    </a>
 
     @include('components.footer')
 </div>
@@ -55,5 +61,6 @@
     <script src="{{asset('js/SliderDetails-preview.js')}}"></script>
     <script src="{{asset('js/BurguerMenu.js')}}"></script>
     <script src="{{asset('js/particles.js')}}"></script>
+    <script src="{{asset('js/Formularios.js')}}"></script>
 </body>
 </html>

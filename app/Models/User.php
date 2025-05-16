@@ -24,6 +24,7 @@ class User extends Authenticatable
         'password',
         'google_id',
         'avatar',
+        'rol',
     ];
 
     /**
@@ -53,7 +54,9 @@ class User extends Authenticatable
         return $this->rol === 'admin';
     }
 
-    public function favoritos(){
-        return $this->hasMany(Favoritos::class);
+
+    public function favoritos()
+    {
+        return $this->belongsToMany(Obra::class, 'favoritos', 'user_id', 'obra_id');
     }
 }

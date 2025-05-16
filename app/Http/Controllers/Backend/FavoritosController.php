@@ -72,17 +72,20 @@ class FavoritosController extends Controller
         //
     }
 
-    public function toggle($obraId)
+    public function toggle(Obra $obra)
     {
         $user = auth()->user();
-        $favorito = $user->favoritos()->where('obra_id', $obraId)->first();
 
-        if ($favorito) {
-            $favorito->delete();
-            return response()->json(['success' => true, 'favorito' => false]);
+        if (!$user) {
+            return response()->json(['error' => 'No autorizado'], 401);
+        }
+
+        if ($user->favoritos()->where('obra_id', $obra->id)->exists()) {
+            $user->favoritos()->detach($obra->id);
+            return response()->json(['favorito' => false]);
         } else {
-            $user->favoritos()->create(['obra_id' => $obraId]);
-            return response()->json(['success' => true, 'favorito' => true]);
+            $user->favoritos()->attach($obra->id);
+            return response()->json(['favorito' => true]);
         }
     }
 

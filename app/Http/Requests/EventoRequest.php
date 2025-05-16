@@ -26,9 +26,9 @@ class EventoRequest extends FormRequest
             'descripcion' => 'nullable|string',
             'fecha' => 'required|date',
             'ubicacion' => 'required|string|max:255',
-            'imagen' => 'required|image|max:2048',
             'hora_inicio' => 'required|date_format:H:i',
             'hora_fin' => 'required|date_format:H:i',
+            'estado' => 'required|boolean',
         ];
     }
 }

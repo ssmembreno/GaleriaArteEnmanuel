@@ -24,13 +24,35 @@ main, .content {
     flex: 1;
 }
 
+.whatsapp-float {
+    position: fixed;
+    bottom:30px;
+    right: 30px;
+    z-index: 9999;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-float img {
+    width: 50px;
+    height: 50px;
+}
 
 /************HEADER Loyaout****************/
 .custom-header {
     background-color: #0e0e1a;
     padding: 10px 20px;
     position: relative;
-    z-index: 9999;
 }
 
 .logo-img {
@@ -203,6 +225,10 @@ main, .content {
     background-color: #5ec916;
     color: white;
 
+}
+
+.form-control-footer{
+    width: 100%;
 }
 
 .container-footer{
@@ -583,6 +609,11 @@ main, .content {
 
 /*********************Obras de arte Seccion**************************/
 
+
+.text-danger { color: red !important; }
+.text-dark { color: black !important; }
+
+
 .btn-favorito-container {
     position: absolute;
     top: 10px;
@@ -597,11 +628,9 @@ main, .content {
 
 .btn-favorito-toggle,
 .btn-detalles {
-    background-color: white;
     border: none;
     border-radius: 50%;
     padding: 8px 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     transition: transform 0.2s ease, background-color 0.3s ease;
     display: inline-flex;
     justify-content: center;
@@ -818,6 +847,17 @@ main, .content {
     z-index: 10;
 }
 
+.pagination-art{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0 auto;
+    text-align: center;
+}
+
+.pagination-art p{
+    display: none;
+}
 /*Filtros*/
 .filtros {
     background-color: #ffffff;
@@ -846,7 +886,7 @@ main, .content {
 }
 
 .filtros .form-select option:checked {
-    background-color: #cfe8d7 !important; /* verde suave */
+    background-color: #cfe8d7 !important;
     color: #000 !important;
 }
 
@@ -1679,6 +1719,16 @@ form.mb-4 button.btn-comments{
         margin-right: 10px;
         margin-bottom: 10px;
     }
+
+    .imagen-brochazo-derecha{
+        display: none;
+    }
+
+    .whatsapp-float {
+        bottom:35px;
+        right: 15px;
+        z-index: 9999;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2141,6 +2191,5 @@ form.mb-4 button.btn-comments{
 }
 
 
-/********************BLOG NOTICIAS*******************/
 
 

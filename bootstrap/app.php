@@ -14,6 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'adminLogueado'=>\App\Http\Middleware\adminLogueado::class,
             'admin' => \App\Http\Middleware\VerficarAdmin::class,
+            'visitas' => \App\Http\Middleware\visitasUsers::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

@@ -19,7 +19,7 @@ prev.onclick = function () {
 
 let refreshInterval = setInterval(() => {
     next.click();
-}, 5000);
+}, 6000);
 
 function showSlider() {
 
@@ -37,9 +37,8 @@ function showSlider() {
         showSlider();
     }, 50000);
 
-    // desbloquear después de la transición
     setTimeout(() => {
         isTransitioning = false;
-    }, 800); // debe coincidir con tu `transition: .5s`
+    }, 1000);
 
 }

@@ -83,9 +83,6 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Guardar Obra</button>
-                <a href="{{ action([App\Http\Controllers\Backend\obraController::class, 'index'])}}">
-                    <span class="btn btn-secondary">Volver al listado de Obras</span>
-                </a>
             </form>
         </div>
 @endsection

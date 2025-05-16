@@ -10,16 +10,16 @@
                 <p class="text-muted">No tienes obras en favoritos aún.</p>
             @else
                 <div class="masonry-grid" data-masonry='{"percentPosition": true }'>
-                    @foreach($favoritos as $favorito)
+                    @foreach($favoritos as $obra)
                         <div class="masonry-item col-12 col-sm-6 col-md-4 mb-4">
                             <div class="obra-card text-center">
                                 <div class="obra-img-wrapper">
-                                    <a href="{{ route('obraDetails', $favorito->obra->id) }}">
-                                        <img src="{{ asset('storage/' . $favorito->obra->imagen) }}" alt="{{ $favorito->obra->nombre }}" class="img-fluid rounded">
+                                    <a href="{{ route('obraDetails', $obra->id) }}">
+                                        <img src="{{ asset('storage/' . $obra->imagen) }}" alt="{{ $obra->nombre }}" class="img-fluid rounded">
                                     </a>
                                 </div>
                                 <div class="obra-info mt-2">
-                                    <strong>{{ $favorito->obra->nombre }}</strong><br>
+                                    <strong>{{ $obra->nombre }}</strong><br>
                                 </div>
                             </div>
                         </div>

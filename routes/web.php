@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\ComentariosController;
+use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\EventosController;
 use App\Http\Controllers\Backend\GeneroController;
 use App\Http\Controllers\Backend\GoogleController;
 use App\Http\Controllers\Backend\PerfilController;
+use App\Http\Controllers\Backend\UsuariosController;
 use App\Http\Controllers\Models\HomeController;
 use App\Http\Controllers\Backend\TipoObrasController;
 use App\Models\Genero;
@@ -16,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Backend\FormularioContacto;
 
 
 Route::get('/', [HomeController::class, 'home'])->name('inicio');
@@ -33,14 +36,7 @@ Route::get('/artDetails/{id}',function($id){
 })->name('obraDetails');
 
 //Muestra todas la obras publicadas
-Route::get('/ObrasArte', function () {
-    $obras = Obra::orderBy('created_at', 'desc')->take(45)->get();
-    $tiposObra = TipoObra::all();
-    $generoObra = Genero::all();
-    $favoritosIds = auth()->check() ? auth()->user()->favoritos()->pluck('obra_id')->toArray() : [];
-
-    return view('galery.ObrasArte', compact('obras','tiposObra','generoObra','favoritosIds'));
-});
+Route::get('/ObrasArte', [\App\Http\Controllers\Backend\obraController::class, 'index'])->name('obras.index');
 
 Route::get('/aboutUs',function(){
     return view('aboutUs');
@@ -49,6 +45,13 @@ Route::get('/aboutUs',function(){
 Route::get('/contactUs',function(){
     return view('contactUs');
 });
+
+Route::get('contacto',function(){
+    \Illuminate\Support\Facades\Mail::to('samuel.mem123@gmail.com')->send(new \App\Mail\ContactanosMailable());
+    return 'Mensaje enviado';
+});
+
+Route::post('contactanos',[\App\Http\Controllers\Backend\ContactanosController::class,'store'])->name('contactanos.store');
 
 Route::get('events',function(){
     $eventos = \App\Models\evento::all();
@@ -75,7 +78,7 @@ Route::get('/generos',[GeneroController::class,'index'])->name('generos.index');
 /*
  ADMINISTRADOR
 */
-Route::prefix('admin')->group(function(){
+Route::middleware('auth')->prefix('admin')->group(function(){
     Route::middleware('adminLogueado:0')->group(function(){
         // Login
         Route::get('login', [AdminController::class, 'login'])->name('admin.login');
@@ -89,6 +92,10 @@ Route::prefix('admin')->group(function(){
 
         Route::resource('obras', \App\Http\Controllers\Backend\obraController::class);
 
+        Route::get('obra',[AdminController::class,'indexObrasAdmin'])->name('admin.obra.index');
+
+        Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
         //comentarios
         Route::get('comentarios', [ComentariosController::class, 'index'])->name('comentarios.index');
         Route::patch('comentarios/{comentario}/aprobar', [ComentariosController::class, 'aprobar'])->name('comentarios.aprobar');
@@ -101,6 +108,12 @@ Route::prefix('admin')->group(function(){
         Route::get('/eventos/{evento}/editar', [EventosController::class, 'edit'])->name('eventos.edit');
         Route::put('/eventos/{evento}', [EventosController::class, 'update'])->name('eventos.update');
         Route::delete('/eventos/{evento}', [EventosController::class, 'destroy'])->name('eventos.destroy');
+
+        //USUARIOS
+        Route::get('usuarios',[UsuariosController::class,'index'])->name('usuarios.index');
+        Route::get('usuarios/{usuarios}/editar', [UsuariosController::class, 'edit'])->name('usuarios.edit');
+        Route::put('/usuarios/{usuarios}', [UsuariosController::class, 'update'])->name('usuarios.update');
+        Route::delete('usuarios/{user}', [UsuariosController::class, 'destroy'])->name('usuarios.destroy');
     });
 });
 
@@ -119,10 +132,10 @@ Route::middleware('guest')->group(function(){
 
     Route::get('/auth/google/callback', [GoogleController::class, 'callback'])->name('google.callback');
 
-    //Modificacion de datos
-    Route::put('/usuario/{id}', [PerfilController::class, 'update'])->name('usuario.update');
-
 });
+
+Route::middleware('auth')->put('/usuario/{id}', [PerfilController::class, 'update'])->name('usuario.update');
+
 
 //Logout
 Route::post('logout', [App\Http\Controllers\Login\LoginController::class, 'logout'])->name('logout');

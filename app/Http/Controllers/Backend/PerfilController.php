@@ -61,11 +61,13 @@ class PerfilController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
+            'apellido' => 'required|string|max:255',
             'password' => 'nullable|string|min:6',
         ]);
 
         $usuario = User::findOrFail($id);
         $usuario->name = $request->name;
+        $usuario->apellido = $request->apellido;
         $usuario->email = $request->email;
 
         if ($request->filled('password')) {

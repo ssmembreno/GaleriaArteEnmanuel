@@ -15,5 +15,6 @@ class evento extends Model
         'imagen',
         'hora_inicio',
         'hora_fin',
+        'estado',
     ];
 }

@@ -12,7 +12,8 @@
                     <a href="{{ route('obraDetails', $obra->id) }}" class="d-block">
                         <img src="{{ asset('storage/' . $obra->imagen) }}"
                              alt="{{ $obra->nombre }}"
-                             class="img-fluid rounded shadow-sm w-100 home-img">
+                             class="img-fluid rounded shadow-sm w-100 home-img"
+                             title="{{$obra->nombre}}">
                     </a>
                 </div>
             @endforeach
@@ -21,8 +22,8 @@
 
     <!-- Botones centrados -->
     <div class="mt-4 d-flex justify-content-center gap-3">
-        <a href="{{ asset('contactUs') }}" class="btn-biografia">Contacta</a>
-        <a href="{{ asset('ObrasArte') }}" class="btn-biografia">Ver más arte</a>
+        <a href="{{ asset('contactUs') }}" class="contact-details btn-biografia">Contacta</a>
+        <a href="{{ asset('ObrasArte') }}" class="contact-details btn-biografia">Ver más arte</a>
     </div>
 </div>
 

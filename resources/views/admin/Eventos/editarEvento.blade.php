@@ -2,17 +2,6 @@
 
 @section('ContentAdmin')
     @include('_includes.Modules')
-
-    @if($errors->any())
-        <div class="alert alert-danger">
-            <ul class="mb-0">
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
     <div class="card shadow mb-4">
         <div class="card-body">
             <form method="POST" action="{{ route('eventos.update', $evento->id) }}">
@@ -47,6 +36,11 @@
                 <div class="form-group">
                     <label for="ubicacion">Ubicación</label>
                     <input type="text" name="ubicacion" class="form-control" id="ubicacion" value="{{ old('ubicacion', $evento->ubicacion) }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ubicacion">Estado</label>
+                    <input type="text" name="estado" class="form-control" id="estado" value="{{ old('estado', $evento->estado) }}" required>
                 </div>
 
                 <button type="submit" class="btn btn-success">Guardar cambios</button>

@@ -1,7 +1,7 @@
 <div class="col-lg-4 col-md-12 animate-left">
     <div class="obra-info">
         <h1 class="title-obra-details">{{ $obra->nombre }}</h1>
-        <p class="text-muted">by {{ $obra->artista->nombre ?? 'Unknown Artist' }}</p>
+        <p class="text-muted">{{ $obra->artista->nombre ?? 'Unknown Artist' }}</p>
         <button class="contact-details w-100 my-4 py-3">Contacta con el artista</button>
 
         @php

@@ -76,7 +76,6 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Guardar Obra</button>
-            <a href="{{ route('obras.index') }}" class="btn btn-secondary">Volver al listado</a>
         </form>
     </div>
 @endsection

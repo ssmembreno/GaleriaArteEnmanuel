@@ -50,13 +50,11 @@ function inicializarBotonesFavoritos() {
                     setTimeout(() => button.classList.remove('bounce'), 300);
 
                     if (data.favorito) {
-                        button.classList.add('activo');
-                        icon.classList.remove('fa-regular');
-                        icon.classList.add('fa-solid');
+                        icon.classList.remove('fa-regular', 'text-dark');
+                        icon.classList.add('fa-solid', 'text-danger');
                     } else {
-                        button.classList.remove('activo');
-                        icon.classList.remove('fa-solid');
-                        icon.classList.add('fa-regular');
+                        icon.classList.remove('fa-solid', 'text-danger');
+                        icon.classList.add('fa-regular', 'text-dark');
                     }
                 })
                 .catch(() => {

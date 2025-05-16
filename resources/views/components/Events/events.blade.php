@@ -13,8 +13,8 @@
 
         <div class="neon-events-list">
             @foreach ($eventos as $evento)
-                <div class="neon-event-card">
-                    <!-- Imagen -->
+                <div class="neon-event-card {{ !$evento->estado ? 'evento-finalizado' : '' }}">
+                <!-- Imagen -->
                     <img class="neon-event-image" src="{{ asset('storage/' . $evento->imagen) }}"
                          alt="{{ $evento->nombre }}" title="{{ $evento->nombre }}">
 
@@ -41,6 +41,16 @@
                                 <i>📍</i>
                                 <span>{{ $evento->ubicacion }}</span>
                             </div>
+
+                            @if($evento->estado)
+                            <div class="neon-event-detail">
+                                <p style="font-weight: bold; color: #5ec916; font-size: 16px">Proximamente</p>
+                            </div>
+                            @else
+                                <div class="neon-event-detail">
+                                    <p style="font-weight: bold; color: red; font-size: 16px">Evento Finalizado</p>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -49,3 +59,9 @@
 
     </div>
 </div>
+
+<style>
+    .evento-finalizado {
+        background-color: #f0f0f0;
+    }
+</style>

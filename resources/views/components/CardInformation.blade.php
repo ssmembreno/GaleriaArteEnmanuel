@@ -9,7 +9,7 @@
                 <p class="nota-subtitulo">ARTISTA HONDUREÑO</p>
                 <div class="nota-separador"></div>
                 <p class="nota-descripcion">
-                    <strong>Artista</strong> es un  con más de 30 años
+                    <strong>Artista</strong> hondureño con más de 30 años
                     de trayectoria, especializado en el realismo. A lo largo de su carrera ha plasmado con maestría paisajes, bodegones y retratos, destacando por su atención al detalle y sensibilidad artística.
                 </p>
                 <a href="{{asset('/aboutUs')}}" class="nota-btn">Biografia</a>

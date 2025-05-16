@@ -22,28 +22,39 @@
                 </ul>
             </div>
 
-            <!-- Contacto -->
             <div class="col-12 col-sm-6 col-lg-3">
                 <h6 class="fw-semibold">Contáctanos</h6>
-                <form class="mt-3">
+
+                <form id="footerForm" action="{{route('contactanos.store')}}" class="mt-3" method="POST">
+                    @csrf
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+
                     <div class="mb-2">
-                        <input type="text" class="form-control form-control-sm" placeholder="nombre" required>
+                        <input type="text" name="nombre" class="form-control-footer form-control-sm" placeholder="nombre" required>
                     </div>
                     <div class="mb-2">
-                        <textarea class="form-control form-control-sm" rows="2" placeholder="mensaje" required></textarea>
+                        <input type="text" name="email" class="form-control-footer form-control-sm" placeholder="correo electronico" required>
+                    </div>
+                    <div class="mb-2">
+                        <textarea name="mensaje" class="form-control-footer form-control-sm" rows="2" placeholder="mensaje" required></textarea>
                     </div>
                     <button type="submit" class="btn contact-form btn-sm w-100">Enviar</button>
                 </form>
+
+                <div id="mensajeEnviado" style="display: none; margin-top: 0.5rem;" class="alert alert-success p-2">
+                    ✅ ¡Mensaje enviado!
+                </div>
             </div>
 
             <!-- Redes sociales -->
             <div class="col-12 col-sm-6 col-lg-3">
                 <h6 class="fw-semibold">Redes Sociales</h6>
                 <div class="icons-social d-flex flex-wrap gap-2 mt-2">
-                    <a href="#"><img src="{{ asset('img/icons/facebook.png') }}" alt="Facebook" width="44"></a>
-                    <a href="#"><img src="{{ asset('img/icons/instagram.png') }}" alt="Instagram" width="44"></a>
-                    <a href="#"><img src="{{ asset('img/icons/tiktok.png') }}" alt="TikTok" width="44"></a>
-                    <a href="#"><img src="{{ asset('img/icons/whatsapp.png') }}" alt="WhatsApp" width="44"></a>
+                    <a href="https://www.facebook.com/p/Galer%C3%ADa-de-Arte-Enmanuel-Membre%C3%B1o-100025235529748/?locale=es_LA" target="_blank"><img src="{{ asset('img/icons/facebook.png') }}" alt="Facebook" width="44"></a>
+                    <a href="https://www.instagram.com/membrenobflores/?hl=es-la" target="_blank"><img src="{{ asset('img/icons/instagram.png') }}" alt="Instagram" width="44"></a>
+                    <a href="https://www.tiktok.com/@galeriaarteenmanuel" target="_blank"><img src="{{ asset('img/icons/tiktok.png') }}" alt="TikTok" width="44"></a>
+                    <a href="https://wa.me/+50496432644" target="_blank"><img src="{{ asset('img/icons/whatsapp.png') }}" alt="WhatsApp" width="44"></a>
                 </div>
             </div>
         </div>
@@ -55,3 +66,46 @@
         </div>
     </div>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const footerForm = document.getElementById('footerForm');
+        if (!footerForm) return;
+
+        footerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(footerForm);
+
+            fetch(footerForm.action, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: formData
+            })
+                .then(async res => {
+                    if (!res.ok) {
+                        const errorText = await res.text();
+                        console.error("Error:", errorText);
+                        throw new Error("Algo salió mal");
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    const mensajeDiv = document.getElementById('mensajeEnviado');
+                    mensajeDiv.textContent = data.mensaje;
+                    mensajeDiv.style.display = 'block';
+                    footerForm.reset();
+
+                    setTimeout(() => {
+                        mensajeDiv.style.display = 'none';
+                    }, 4000);
+                })
+                .catch(error => {
+                    console.error("Error al enviar:", error);
+                    alert('❌ Error al enviar el mensaje.');
+                });
+        });
+    });
+</script>

@@ -19,11 +19,17 @@ class obraController extends Controller
      */
     public function index()
     {
+        $obras = Obra::orderBy('created_at', 'desc')->take(30)->paginate(30);
+        $tiposObra = TipoObra::all();
+        $generoObra = Genero::all();
+        $favoritosIds = auth()->check() ? auth()->user()->favoritos()->pluck('obra_id')->toArray() : [];
 
-        $obras = Obra::all();
-        $tiposObra = tipoObra::all();
+        return view('galery.ObrasArte' ,compact('obras','tiposObra','generoObra','favoritosIds'));
 
-        return view('admin.Obras.index', compact('obras','tiposObra'));
+    }
+
+    public function admin(){
+        return view('admin.Obras.index');
     }
 
     /**
@@ -74,7 +80,7 @@ class obraController extends Controller
             }
         }
 
-        return redirect()->route('obras.index')-> with('success','Obra creada correctamente');
+        return redirect()->route('admin.obra.index')-> with('success','Obra creada correctamente');
     }
 
     /**
@@ -137,7 +143,7 @@ class obraController extends Controller
                 ]);
             }
         }
-        return redirect()->route('obras.index')-> with('success','Obra actualizada correctamente');
+        return redirect()->route('admin.obra.index')-> with('success','Obra actualizada correctamente');
 
     }
 
@@ -152,7 +158,7 @@ class obraController extends Controller
             abort(404);
         }
         $obra->delete();
-        return redirect()->route('obras.index')->with('success','Obra eliminada correctamente');
+        return redirect()->route('admin.obra.index')->with('success','Obra eliminada correctamente');
     }
 
 

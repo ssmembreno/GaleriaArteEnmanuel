@@ -7,7 +7,7 @@
         <form action="{{ route('comentarios.store', ['obra' => $obra->id]) }}" method="POST" class="mb-4" id="comentario-form">
             @csrf
             <div class="d-flex align-items-start bg-white p-3 rounded shadow">
-                <img src="{{ Auth::user()->avatar ?? 'https://via.placeholder.com/40' }}" class="rounded-circle me-2" width="40" height="40" alt="avatar">
+                <img src="{{ Auth::user()->avatar ?? asset('img/default-avatar.webp') }}" class="rounded-circle me-2" width="40" height="40" alt="avatar">
                 <textarea name="contenido" class="form-control me-2" rows="2" placeholder="Añadir un comentario" required></textarea>
                 <button type="submit" class="btn-comments">Enviar</button>
             </div>
@@ -29,7 +29,7 @@
                 @if($comentario->status == 1)
                 <div class="comentario-card bg-white p-3 rounded shadow mb-3 position-relative">
                     <div class="d-flex">
-                        <img src="{{ $comentario->user->avatar ?? 'https://via.placeholder.com/40' }}" class="rounded-circle me-2" width="40" height="40" alt="avatar">
+                        <img src="{{ Auth::user()->avatar ?? asset('img/default-avatar.webp') }}" class="rounded-circle me-2" width="40" height="40" alt="avatar">
                         <div>
                             <strong>{{ $comentario->user->name }}</strong>
                             <small class="text-muted ms-2">{{ $comentario->created_at->diffForHumans() }}</small>

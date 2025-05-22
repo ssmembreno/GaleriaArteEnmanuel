@@ -44,11 +44,11 @@
 
                             @if($evento->estado)
                             <div class="neon-event-detail">
-                                <p style="font-weight: bold; color: #5ec916; font-size: 16px">Proximamente</p>
+                                <p style="font-weight: bold; color: #5ec916; font-size: 16px; margin-top: 20px; margin-left: 10px">Proximamente</p>
                             </div>
                             @else
                                 <div class="neon-event-detail">
-                                    <p style="font-weight: bold; color: red; font-size: 16px">Evento Finalizado</p>
+                                    <p style="font-weight: bold; color: red; font-size: 16px; margin-top: 20px; margin-left: 10px">Evento Finalizado</p>
                                 </div>
                             @endif
                         </div>

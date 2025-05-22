@@ -2,7 +2,9 @@
     <div class="obra-info">
         <h1 class="title-obra-details">{{ $obra->nombre }}</h1>
         <p class="text-muted">{{ $obra->artista->nombre ?? 'Unknown Artist' }}</p>
-        <button class="contact-details w-100 my-4 py-3">Contacta con el artista</button>
+        <a href="https://wa.me/50498765432" target="_blank" class="btn contact-details w-100 my-4 py-3">
+            Contacta con el artista
+        </a>
 
         @php
             $promedio = round($obra->valoraciones->avg('calificacion'), 1);

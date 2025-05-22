@@ -53,11 +53,11 @@ Route::get('contacto',function(){
 
 Route::post('contactanos',[\App\Http\Controllers\Backend\ContactanosController::class,'store'])->name('contactanos.store');
 
-Route::get('events',function(){
-    $eventos = \App\Models\evento::all();
-    return view('eventsNews',compact('eventos'));
-
+Route::get('events', function () {
+    $eventos = \App\Models\evento::orderBy('created_at', 'desc')->get();
+    return view('eventsNews', compact('eventos'));
 });
+
 
 Route::get('/galeria',[HomeController::class,'galeria']);
 

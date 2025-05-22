@@ -42,9 +42,15 @@
                         <input type="text" name="ubicacion" id="ubicacion" class="form-control" required value="{{ old('ubicacion') }}">
                     </div>
 
+
                     <div class="form-group">
                         <label for="imagen">Imagen del evento</label>
                         <input type="file" name="imagen" id="imagen" class="form-control-file" accept="image/*">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="estado">Estado</label>
+                        <input type="text" name="estado" id="estado" class="form-control" required value="{{ old('estado') }}">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Guardar evento</button>

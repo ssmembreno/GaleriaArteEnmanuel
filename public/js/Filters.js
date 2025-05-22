@@ -49,8 +49,15 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(res => res.text())
             .then(html => {
                 contenedor.innerHTML = html;
-                inicializarBotonesFavoritos()
-                inicializarMasonry()
+
+                const grid = document.querySelector('#masonry-grid');
+                if (!grid) return;
+
+                imagesLoaded(grid, function () {
+                    inicializarMasonry();
+                });
+
+                inicializarBotonesFavoritos();
             })
             .catch(error => {
                 console.error('Error al filtrar obras:', error);

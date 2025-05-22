@@ -1,2 +1,14 @@
 User-agent: *
-Disallow:
+Disallow: /admin/
+Disallow: /login
+Disallow: /register
+Disallow: /password
+Disallow: /dashboard
+Disallow: /cart
+Disallow: /checkout
+Disallow: /user
+Disallow: /api/
+
+Allow: /
+
+Sitemap: https://www.tu-dominio.com/sitemap.xml

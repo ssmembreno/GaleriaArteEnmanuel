@@ -24,6 +24,7 @@ class CrearObraRequest extends FormRequest
         return [
             'nombre' => 'required|max:30',
             'descripcion' => 'required|min:10|max:400',
+            'desc_ingles' => 'required|min:10|max:400',
             'precio' => 'required|decimal:2,4',
             'tamaño' => 'required|string',
             'estado' => 'required|in:EnVenta,Vendida',

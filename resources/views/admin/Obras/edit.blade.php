@@ -26,9 +26,21 @@
                     <input type="text" class="form-control" id="nombre" name="nombre" autocomplete="off" value="{{$obra->nombre}}"  >
                 </div>
 
-                <div class="form-group">
-                    <label for="descripcion">Descripción</label>
-                    <textarea class="form-control" id="descripcion" name="descripcion" rows="3" autocomplete="off">{{$obra->descripcion}}</textarea>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="descripcion">Descripción<span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="descripcion" name="descripcion" rows="3" autocomplete="off">{{$obra->descripcion}}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="descr_ingles">Descripción en inglés<span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="desc_ingles" name="desc_ingles" rows="3"autocomplete="off">{{$obra->desc_ingles}}</textarea>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">

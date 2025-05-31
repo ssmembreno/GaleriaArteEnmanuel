@@ -24,7 +24,12 @@
 
 
         <h5 class="mt-4"> {{__('messages.DESCRIPCION')}}:</h5>
-        <p>{{ $obra->descripcion }}</p>
+
+        @if(app()->getLocale() == 'en')
+            <p>{{ $obra->desc_ingles ?? 'No description available.' }}</p>
+        @else
+            <p>{{ $obra->descripcion }}</p>
+        @endif
 
         <div class="row mb-2">
             <div class="col-6 fw-bold"> {{__('messages.PRECIO')}}:</div>

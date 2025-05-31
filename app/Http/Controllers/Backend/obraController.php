@@ -17,8 +17,7 @@ class obraController extends Controller
     /**
      * Display a listing of the resource.
      */
-public function index()
-{
+public function index(){
     $obras = Obra::orderByRaw("CASE WHEN estado = 'EnVenta' THEN 0 ELSE 1 END")
                  ->orderBy('created_at', 'desc')
                  ->paginate(30);
@@ -29,7 +28,6 @@ public function index()
 
     return view('galery.ObrasArte', compact('obras', 'tiposObra', 'generoObra', 'favoritosIds'));
 }
-
 
     public function admin(){
         return view('admin.Obras.index');
@@ -50,41 +48,46 @@ public function index()
      * Store a newly created resource in storage.
      */
     public function store(CrearObraRequest $request)
-    {
-        $obra = new Obra();
-        $obra->nombre = $request->input('nombre');
-        $obra->descripcion = $request->input('descripcion');
-        $obra->tecnica = $request->input('tecnica');
-        $obra->tamaño = $request->input('tamaño');
-        $obra->precio = $request->input('precio');
-        $obra->estado = $request->input('estado');
-        $obra->artista_id = $request->input('artista_id');
-        $obra->tipo_obra_id = $request->input('tipo_obra_id');
-        $obra->genero_id = request('genero_id');
+{
+    $obra = new Obra();
+    $obra->nombre = $request->input('nombre');
+    $obra->descripcion = $request->input('descripcion');
+    $obra->desc_ingles = $request->input('desc_ingles');
+    $obra->tecnica = $request->input('tecnica');
+    $obra->tamaño = $request->input('tamaño');
+    $obra->precio = $request->input('precio');
+    $obra->estado = $request->input('estado');
+    $obra->artista_id = $request->input('artista_id');
+    $obra->tipo_obra_id = $request->input('tipo_obra_id');
+    $obra->genero_id = request('genero_id');
 
-        //Se maneja la subida de la imagen principal
-        if($request->hasFile('imagen')){
-            $storageLink = $request->file('imagen')->store('obras', 'public');
-            $obra->imagen = $storageLink;
-        }
-
-        $obra->save();
-
-        //Control de las imagenes multiples en detalles
-        if($request->hasFile('imagenes')){
-            foreach ($request->file('imagenes') as $key => $imagenAdicional) {
-                $storageLink = $imagenAdicional->store('obras', 'public');
-
-                ImagenObra::create([
-                    'ruta_imagen' => $storageLink,
-                    'obra_id' => $obra->id,
-                    'orden' => $key + 1,
-                ]);
-            }
-        }
-
-        return redirect()->route('admin.obra.index')-> with('success','Obra creada correctamente');
+    // Guardar la imagen principal en uploads
+    if ($request->hasFile('imagen')) {
+        $file = $request->file('imagen');
+        $filename = time() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('uploads'), $filename);
+        $obra->imagen = 'uploads/' . $filename;
     }
+
+    $obra->save();
+
+    // Guardar imágenes adicionales en uploads
+    if ($request->hasFile('imagenes')) {
+        foreach ($request->file('imagenes') as $key => $imagenAdicional) {
+            $filename = time() . '_' . $imagenAdicional->getClientOriginalName();
+            $imagenAdicional->move(public_path('uploads'), $filename);
+
+            ImagenObra::create([
+                'ruta_imagen' => 'uploads/' . $filename,
+                'obra_id' => $obra->id,
+                'orden' => $key + 1,
+            ]);
+        }
+    }
+
+    return redirect()->route('admin.obra.index')->with('success', 'Obra creada correctamente');
+}
+
 
     /**
      * Display the specified resource.

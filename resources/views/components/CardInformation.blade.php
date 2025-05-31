@@ -5,7 +5,7 @@
                 <img src="{{asset('img/EnmanuelInfo.webp')}}" alt="Enmanuel Membreño">
             </div>
             <div class="nota-contenido">
-                <h2 class="nota-titulo">Enmanuel Membreño</h2>
+                <h2 class="nota-titulo title-name-home">Enmanuel Membreño</h2>
                 <p class="nota-subtitulo">{{__('messages.CARD_ARTIST')}}</p>
                 <div class="nota-separador"></div>
                 <p class="nota-descripcion">
@@ -16,3 +16,14 @@
         </div>
     </div>
 </div>
+
+<style>
+.title-name-home {
+    font-size: 2.8rem;
+    font-weight: 100;
+    line-height: 0.9;
+    text-transform: uppercase;
+    color: #111;
+    font-family: 'Anton', sans-serif;
+}
+</style>

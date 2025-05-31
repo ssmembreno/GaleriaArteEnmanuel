@@ -15,7 +15,7 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                     <a href="{{localized_route('obraDetails', $obra->id) }}" class="text-decoration-none text-dark d-block h-100">
                         <div class="position-relative obra-hover-group">
-                            <img src="{{ asset('storage/' . $obra->imagen) }}"
+                            <img src="{{ asset($obra->imagen) }}"
                                  alt="Obra {{ $obra->nombre }}"
                                  class="img-fluid rounded w-100"
                                  title="Obra: {{ $obra->nombre }} por Enmanuel Membreño">
@@ -40,9 +40,17 @@
                             <div class="text-uppercase" style="font-size: 0.85rem; font-weight: bold">
                                 "{{ strtoupper($obra->nombre) }}"
                             </div>
+
+                                    
                             <div class="descripcion-limitada text-muted mt-1" style="font-size: 0.85rem; font-weight: bold">
-                                {{ $obra->descripcion }}
+                                @if(app()->getLocale() == 'en')    
+                                    {{ $obra->desc_ingles ?? 'No description available.'}}
+                                @else  
+                                    {{ $obra->descripcion}}  
+                                @endif
                             </div>
+                        
+                            
                             <div class="mt-1 text-muted" style="font-size: 0.85rem; font-weight: bold">
                                 {{ $obra->tipoObra->nombre ?? 'Sin técnica' }} | {{ $obra['tamaño'] }} cm
                             </div>

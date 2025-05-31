@@ -15,6 +15,7 @@ class Obra extends Model
     protected $fillable = [
         'nombre',
         'descripcion',
+        'desc_ingles',
         'tecnica',
         'precio',
         'tamaño',

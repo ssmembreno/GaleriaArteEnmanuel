@@ -12,8 +12,8 @@ class DashboardController
 {
     public function index(){
 
-        $usuarios = \App\Models\User::count();
-        $visualizaciones = \App\Models\Obra::sum('visualizaciones');
+        $usuarios = User::count();
+        $visualizaciones = Visitas::count();
 
         $visitasPorPais = Visitas::select('pais', DB::raw('count(*) as total'))
             ->groupBy('pais')

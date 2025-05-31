@@ -7,5 +7,6 @@
 
     @include('components.cards')
 
+    @include('components.esencialArt')
 
 @endsection

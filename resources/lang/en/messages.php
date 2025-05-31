@@ -59,6 +59,9 @@ return [
     'BTN_HOME_CONTACT' => 'Contact',
     'BTN_HOME_ART' => 'See more art',
 
+    //TITLE HOME ART DESTACADO
+    'TITLE_HOME_ART' => 'Featured Works',
+
     //galery
     'OBRAS' => 'WORKS',
     'DE' => 'OF',

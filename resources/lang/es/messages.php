@@ -60,6 +60,9 @@
      'BTN_HOME_CONTACT' => 'Contacto',
      'BTN_HOME_ART' => 'Ver más arte',
 
+    //TITLE HOME ART DESTACADO
+    'TITLE_HOME_ART' => 'Obras Destacadas',
+
      //GALERY
      'OBRAS' => 'OBRAS',
      'DE' => 'DE',

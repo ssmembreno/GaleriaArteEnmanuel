@@ -10,7 +10,7 @@
             @foreach($obras as $obra)
                 <div class="col-12 col-sm-6 col-md-4 mb-4">
                     <a href="{{ localized_route('obraDetails', $obra->id) }}" class="d-block">
-                    <img src="{{ asset('storage/' . $obra->imagen) }}"
+                    <img src="{{ asset($obra->imagen) }}"
                              alt="{{ $obra->nombre }}"
                              class="img-fluid rounded shadow-sm w-100 home-img"
                              title="{{$obra->nombre}}">

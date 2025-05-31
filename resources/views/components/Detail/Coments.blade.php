@@ -1,15 +1,15 @@
 <div class="container my-2">
-    <h3 class="title-obra-details title-comments">Envianos un comentario sobre la obra</h3>
+    <h3 class="title-obra-details title-comments">{{__('messages.COMENTS')}}</h3>
     @auth
         <div id="mensaje-exito" class="alert alert-success d-none" role="alert">
-            ¡Comentario enviado con éxito! Será visible tras ser aprobado.
+            {{__('messages.COMENT_SUCCESS')}}
         </div>
         <form action="{{ route('comentarios.store', ['obra' => $obra->id]) }}" method="POST" class="mb-4" id="comentario-form">
             @csrf
             <div class="d-flex align-items-start bg-white p-3 rounded shadow">
                 <img src="{{ Auth::user()->avatar ?? asset('img/default-avatar.webp') }}" class="rounded-circle me-2" width="40" height="40" alt="avatar">
-                <textarea name="contenido" class="form-control me-2" rows="2" placeholder="Añadir un comentario" required></textarea>
-                <button type="submit" class="btn-comments">Enviar</button>
+                <textarea name="contenido" class="form-control me-2" rows="2" placeholder="{{__('messages.ADD_COMENT')}}" required></textarea>
+                <button type="submit" class="btn-comments">{{__('messages.CONTACT_FOOTER_send')}}</button>
             </div>
         </form>
     @endauth
@@ -17,7 +17,7 @@
     @guest
         <div class="d-flex justify-content-center">
             <button class="boton-session-details" data-bs-toggle="modal" data-bs-target="#loginModal">
-                Iniciar sesión o registrarse
+                {{__('messages.NAV_LOGIN')}} o {{__('messages.NAV_SIGNUP')}}
             </button>
         </div>
     @endguest

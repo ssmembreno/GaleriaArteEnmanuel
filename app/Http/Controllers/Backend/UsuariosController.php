@@ -27,7 +27,7 @@ class UsuariosController
         $usuarios = User::find($id);
         $usuarios->update($request->all());
 
-        return redirect()->route('usuarios.index')->with('mensaje', 'Rol actualizado correctamente.');
+        return redirect()->route('usuarios.index')->with('success', 'Rol actualizado correctamente.');
 
     }
 
@@ -40,6 +40,6 @@ class UsuariosController
         }
         $usuario->delete();
 
-        return view('admin.users.userInfo');
+        return redirect()->route('usuarios.index')->with('success', 'usuario eliminado correctamente.');
     }
 }

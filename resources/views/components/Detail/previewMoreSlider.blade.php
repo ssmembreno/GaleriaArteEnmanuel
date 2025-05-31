@@ -4,7 +4,7 @@
             @foreach($obrasParaSlider as $obraItem)
                 <li class="splide__slide position-relative">
                     <img src="{{ asset('storage/'.$obraItem->imagen) }}" alt="{{ $obraItem->nombre }} Enmanuel Membreño artista hondureño Arte Naturaleza Retratos Paisajes bodegones">
-                    <a href="{{route('obraDetails', $obraItem->id)  }}" class="zoom-icon">
+                    <a href="{{localized_route('obraDetails', $obraItem->id)  }}" class="zoom-icon">
                         <i class="fas fa-search"></i>
                     </a>
                 </li>

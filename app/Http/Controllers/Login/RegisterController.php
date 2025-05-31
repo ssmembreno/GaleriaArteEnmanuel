@@ -9,11 +9,18 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
-    public function registerForm(){
-        return view('auth.login');
+    public function registerFormlog(Request $request)
+    {
+        // Guarda la URL actual si viene como 'intended'
+        if ($request->has('intended')) {
+            session(['url.intended' => $request->input('intended')]);
+        }
+
+        return view('auth.login', ['isRegistering' => true]);
     }
 
-    public function register(Request $request){
+    public function register(Request $request)
+    {
         $request->validate([
             'name' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
@@ -22,18 +29,14 @@ class RegisterController extends Controller
         ]);
 
         $user = User::create([
-           'name' => $request->input('name'),
-           'apellido' => $request->input('apellido'),
-           'email' => $request->input('email'),
-           'password' => Hash::make($request->input('password')),
+            'name' => $request->input('name'),
+            'apellido' => $request->input('apellido'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
         ]);
 
         auth()->login($user);
-        return redirect()->route('inicio');
-    }
 
-    public function registerFormlog()
-    {
-        return view('auth.login', ['isRegistering' => true]);
+        return redirect()->intended('/');
     }
 }

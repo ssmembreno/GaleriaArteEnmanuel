@@ -11,7 +11,12 @@ use Laravel\Socialite\Facades\Socialite;
 
 class GoogleController
 {
-    public function redirect(){
+    public function redirect(Request $request)
+    {
+        if ($request->has('intended')) {
+            session(['url.intended' => $request->input('intended')]);
+        }
+
         return Socialite::driver("google")->redirect();
     }
 
@@ -36,13 +41,13 @@ class GoogleController
                 'rol' => 'usuario',
             ]);
         } else {
-            // Actualizar avatar si inicia sesión de nuevo
             $user->update([
                 'avatar' => $avatarUrl,
             ]);
         }
 
         Auth::login($user);
-        return redirect('/');
+
+        return redirect()->intended('/');
     }
 }

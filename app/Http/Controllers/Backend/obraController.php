@@ -9,7 +9,7 @@ use App\Models\Artista;
 use App\Models\Genero;
 use App\Models\ImagenObra;
 use App\Models\Obra;
-use App\Models\tipoObra;
+use App\Models\TipoObra;
 use Illuminate\Support\Arr;
 
 class obraController extends Controller
@@ -17,16 +17,19 @@ class obraController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $obras = Obra::orderBy('created_at', 'desc')->take(30)->paginate(30);
-        $tiposObra = TipoObra::all();
-        $generoObra = Genero::all();
-        $favoritosIds = auth()->check() ? auth()->user()->favoritos()->pluck('obra_id')->toArray() : [];
+public function index()
+{
+    $obras = Obra::orderByRaw("CASE WHEN estado = 'EnVenta' THEN 0 ELSE 1 END")
+                 ->orderBy('created_at', 'desc')
+                 ->paginate(30);
 
-        return view('galery.ObrasArte' ,compact('obras','tiposObra','generoObra','favoritosIds'));
+    $tiposObra = TipoObra::all();
+    $generoObra = Genero::all();
+    $favoritosIds = auth()->check() ? auth()->user()->favoritos()->pluck('obra_id')->toArray() : [];
 
-    }
+    return view('galery.ObrasArte', compact('obras', 'tiposObra', 'generoObra', 'favoritosIds'));
+}
+
 
     public function admin(){
         return view('admin.Obras.index');
@@ -40,7 +43,7 @@ class obraController extends Controller
         $artistas = Artista::all();
         $tiposObra = TipoObra::all();
         $generoObra = Genero::all();
-        return view('admin.obras.create',compact('artistas','tiposObra','generoObra'));
+        return view('admin.Obras.create',compact('artistas','tiposObra','generoObra'));
     }
 
     /**

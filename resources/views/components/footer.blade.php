@@ -6,24 +6,24 @@
             <div class="col-12 col-sm-6 col-lg-3">
                 <img src="{{ asset('img/logo.png') }}" alt="Logo" style="height: 80px;">
                 <p class="footer-text mt-2">
-                    Exposición y reconocimiento de las obras de arte del artista Emmanuel Membreño.
+                    {{__('messages.TITLE_FOOTER')}}
                 </p>
             </div>
 
             <!-- Páginas -->
             <div class="col-6 col-sm-6 col-lg-2">
-                <h6 class="fw-semibold">Páginas</h6>
+                <h6 class="fw-semibold">{{__('messages.PAGE_FOOTER')}}</h6>
                 <ul class="list-unstyled mt-2">
-                    <li class="mb-1"><a href="{{url('/')}}">Inicio</a></li>
-                    <li class="mb-1"><a href="{{url('/ObrasArte')}}">Obras de arte</a></li>
-                    <li class="mb-1"><a href="{{url('/aboutUs')}}">Artista</a></li>
-                    <li class="mb-1"><a href="{{url('/events')}}">Eventos</a></li>
-                    <li class="mb-1"><a href="{{url('/contactUs')}}">Contacto</a></li>
+                    <li class="mb-1"><a href="{{localized_url('/')}}">{{__('messages.NAV_HOME')}}</a></li>
+                    <li class="mb-1"><a href="{{localized_url('/ObrasArte')}}">{{__('messages.NAV_ART')}}</a></li>
+                    <li class="mb-1"><a href="{{localized_url('/aboutUs')}}">{{__('messages.NAV_ARTIST')}}</a></li>
+                    <li class="mb-1"><a href="{{localized_url('/events')}}">{{__('messages.NAV_EVENTS')}}</a></li>
+                    <li class="mb-1"><a href="{{localized_url('/contactUs')}}">{{__('messages.NAV_CONTACT')}}</a></li>
                 </ul>
             </div>
 
             <div class="col-12 col-sm-6 col-lg-3">
-                <h6 class="fw-semibold">Contáctanos</h6>
+                <h6 class="fw-semibold">{{__('messages.CONTACT_FOOTER')}}</h6>
 
                 <form id="footerForm" action="{{route('contactanos.store')}}" class="mt-3" method="POST">
                     @csrf
@@ -31,15 +31,15 @@
                     <input type="hidden" name="_template" value="table">
 
                     <div class="mb-2">
-                        <input type="text" name="nombre" class="form-control-footer form-control-sm" placeholder="nombre" required>
+                        <input type="text" name="nombre" class="form-control-footer form-control-sm" placeholder="{{__('messages.CONTACT_FOOTER_NAME')}}" required>
                     </div>
                     <div class="mb-2">
-                        <input type="text" name="email" class="form-control-footer form-control-sm" placeholder="correo electronico" required>
+                        <input type="text" name="email" class="form-control-footer form-control-sm" placeholder="{{__('messages.CONTACT_FOOTER_EMAIL')}}" required>
                     </div>
                     <div class="mb-2">
-                        <textarea name="mensaje" class="form-control-footer form-control-sm" rows="2" placeholder="mensaje" required></textarea>
+                        <textarea name="mensaje" class="form-control-footer form-control-sm" rows="2" placeholder="{{__('messages.CONTACT_FOOTER_MESSAGE')}}" required></textarea>
                     </div>
-                    <button type="submit" class="btn contact-form btn-sm w-100">Enviar</button>
+                    <button type="submit" class="btn contact-form btn-sm w-100">{{__('messages.CONTACT_FOOTER_send')}}</button>
                 </form>
 
                 <div id="mensajeEnviado" style="display: none; margin-top: 0.5rem;" class="alert alert-success p-2">
@@ -49,7 +49,7 @@
 
             <!-- Redes sociales -->
             <div class="col-12 col-sm-6 col-lg-3">
-                <h6 class="fw-semibold">Redes Sociales</h6>
+                <h6 class="fw-semibold">{{__('messages.SOCIAL_FOOTER')}}</h6>
                 <div class="icons-social d-flex flex-wrap gap-2 mt-2">
                     <a href="https://www.facebook.com/p/Galer%C3%ADa-de-Arte-Enmanuel-Membre%C3%B1o-100025235529748/?locale=es_LA" target="_blank"><img src="{{ asset('img/icons/facebook.png') }}" alt="Facebook" width="44"></a>
                     <a href="https://www.instagram.com/membrenobflores/?hl=es-la" target="_blank"><img src="{{ asset('img/icons/instagram.png') }}" alt="Instagram" width="44"></a>

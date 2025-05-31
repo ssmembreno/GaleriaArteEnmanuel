@@ -7,8 +7,8 @@
     <div class="neon-events-container">
 
         <div class="neon-events-header">
-            <h1 class="Events-title">Eventos</h1>
-            <h2 class="neon-events-title text-muted">Próximos eventos disponibles para la exposición de obras.</h2>
+            <h1 class="Events-title">{{__('messages.NAV_EVENTS')}}</h1>
+            <h2 class="neon-events-title text-muted">{{__('messages.TEXT_EVENTS')}}</h2>
         </div>
 
         <div class="neon-events-list">
@@ -44,11 +44,11 @@
 
                             @if($evento->estado)
                             <div class="neon-event-detail">
-                                <p style="font-weight: bold; color: #5ec916; font-size: 16px; margin-top: 20px; margin-left: 10px">Proximamente</p>
+                                <p style="font-weight: bold; color: #5ec916; font-size: 16px; margin-top: 20px; margin-left: 10px">{{__('messages.STATUS_EVENT')}}</p>
                             </div>
                             @else
                                 <div class="neon-event-detail">
-                                    <p style="font-weight: bold; color: red; font-size: 16px; margin-top: 20px; margin-left: 10px">Evento Finalizado</p>
+                                    <p style="font-weight: bold; color: red; font-size: 16px; margin-top: 20px; margin-left: 10px">{{__('messages.STATUS_EVENT2')}}</p>
                                 </div>
                             @endif
                         </div>

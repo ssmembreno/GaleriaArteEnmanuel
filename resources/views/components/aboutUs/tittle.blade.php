@@ -1,4 +1,4 @@
 <h2 class="about-us-title">
-    Me encanta inspirar<br>
-    a través de <span class="highlight">mi arte</span>
+    {{__('messages.TITLE_ABOUT')}}<br>
+    {{__('messages.TITLE_ABOUT2')}} <span class="highlight">{{__('messages.TITLE_ABOUT3')}}</span>
 </h2>

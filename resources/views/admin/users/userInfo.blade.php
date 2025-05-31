@@ -4,6 +4,7 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
+                @include('_includes.Modules')
                 <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
@@ -29,7 +30,7 @@
                                 <form method="POST" action="{{action([\App\Http\Controllers\Backend\UsuariosController::class, 'destroy'],$usuario->id)}}" class="mt-2">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar esta obra?')"><i class="fa-solid fa-trash"></i></button>
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este usuario?')"><i class="fa-solid fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

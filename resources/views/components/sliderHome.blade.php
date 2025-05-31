@@ -4,30 +4,30 @@
     <div class="item active">
         <img src="{{asset('img/Enmanuel1.jpg')}}" alt="Obra de arte Enmanuel 1 - realismo">
         <div class="content">
-            <p>Arte</p>
+            <p>{{__('messages.ART_HOME')}}</p>
             <h2>Enmanuel Membreño</h2>
             <p>
-                Artista hondureño especializado en el realismo.
+                {{__('messages.SLIDE1')}}
             </p>
         </div>
     </div>
     <div class="item">
         <img src="{{asset('img/Enmanuel2.webp')}}" alt="Obra de arte Enmanuel 2">
         <div class="content">
-            <p>Arte</p>
-            <h2>Retrato</h2>
+            <p>{{__('messages.ART_HOME')}}</p>
+            <h2>{{__('messages.TITTLE_SLIDE2')}}</h2>
             <p>
-               Enmanuel revela la esencia de la persona retratada. Rostros que transmiten historia, carácter y sentimiento.
+                {{__('messages.SLIDE2')}}
             </p>
         </div>
     </div>
     <div class="item">
         <img src="{{asset('img/Enmanuel3.jpg')}}" alt="Obra de arte Enmanuel 3">
         <div class="content">
-            <p>Arte</p>
-            <h2>Bodegones</h2>
+            <p>{{__('messages.ART_HOME')}}</p>
+            <h2>{{__('messages.TITTLE_SLIDE3')}}</h2>
             <p>
-                Composiciones que transforman lo cotidiano en arte. Juego de luces, texturas y simbolismo que invitan a contemplar.
+                {{__('messages.SLIDE3')}}
             </p>
         </div>
     </div>

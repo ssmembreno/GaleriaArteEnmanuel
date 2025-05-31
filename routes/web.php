@@ -9,12 +9,16 @@ use App\Http\Controllers\Backend\GoogleController;
 use App\Http\Controllers\Backend\PerfilController;
 use App\Http\Controllers\Backend\UsuariosController;
 use App\Http\Controllers\Models\HomeController;
+use App\Http\Controllers\Login\LoginController;
+use App\Http\Controllers\Login\RegisterController;
 use App\Http\Controllers\Backend\TipoObrasController;
 use App\Models\Genero;
 use App\Models\Obra;
 use App\Models\TipoObra;
 use App\Models\User;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Hash;
@@ -75,6 +79,20 @@ Route::post('/favoritos/{obra}', [\App\Http\Controllers\Backend\FavoritosControl
 Route::get('/filtrar-obras', [HomeController::class, 'filtrarObras'])->name('filtrar.obras');
 
 Route::get('/generos',[GeneroController::class,'index'])->name('generos.index');
+
+//IDIOMAS
+Route::get('lang/{locale}', function ($locale) {
+    if (! in_array($locale, array_values(config('app.available_locales')))) {
+        abort(400);
+    }
+
+    Session::put('locale', $locale);
+    App::setLocale($locale);
+    Session::save();
+
+    return redirect()->back();
+})->name('lang.switch');
+
 /*
  ADMINISTRADOR
 */
@@ -120,12 +138,12 @@ Route::middleware('auth')->prefix('admin')->group(function(){
 //Login and Register
 Route::middleware('guest')->group(function(){
     //Login
-     Route::get('login', [App\Http\Controllers\Login\LoginController::class, 'loginForm'])->name('login');
-     Route::post('login', [App\Http\Controllers\Login\LoginController::class, 'login'])->name('login');
+     Route::get('login', [LoginController::class, 'loginForm'])->name('login');
+     Route::post('login', [LoginController::class, 'login'])->name('login');
 
      //Register
-    Route::get('register', [App\Http\Controllers\Login\RegisterController::class, 'registerFormlog'])->name('register.form');
-    Route::post('register', [App\Http\Controllers\Login\RegisterController::class, 'register'])->name('register');
+    Route::get('register', [RegisterController::class, 'registerFormlog'])->name('register.form');
+    Route::post('register', [RegisterController::class, 'register'])->name('register');
 
     //Login Google
     Route::get('/auth/google/redirect', [GoogleController::class, 'redirect'])->name('google.redirect');
@@ -138,5 +156,5 @@ Route::middleware('auth')->put('/usuario/{id}', [PerfilController::class, 'updat
 
 
 //Logout
-Route::post('logout', [App\Http\Controllers\Login\LoginController::class, 'logout'])->name('logout');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 

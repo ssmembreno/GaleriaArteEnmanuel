@@ -14,10 +14,10 @@
     <div class="text centered">
         <h1>
             <span class="top-group">
-                <span class="big">OBRAS</span><br>
-                <span class="small">DE</span>
+                <span class="big">{{__('messages.OBRAS')}}</span><br>
+                <span class="small">{{__('messages.DE')}}</span>
             </span><br>
-            <span class="big">ARTE</span>
+            <span class="big">{{__('messages.ARTE')}}</span>
         </h1>
     </div>
 </div>

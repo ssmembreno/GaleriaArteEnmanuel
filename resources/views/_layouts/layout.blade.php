@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Galería de Arte de [Nombre del Artista] | Obras, Eventos y Valoraciones</title>
+    <title>Galería de Arte de Enmanuel Membreño</title>
     <link rel="icon" href="{{asset('img/logo.png')}}">
 
     <!-- Descripción SEO -->

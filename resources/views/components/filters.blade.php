@@ -1,11 +1,11 @@
 <div class="col-md-3">
     <form id="form-filtros">
         <aside class="filtros mb-4 sticky-top" style="top: 100px;">
-            <h5>Filtros</h5>
+            <h5>{{__('messages.FILTERS')}}</h5>
 
             <!-- Rango de precio -->
             <div class="mb-4 rango-precio">
-                <label class="form-label">Rango de precio</label>
+                <label class="form-label">{{__('messages.RANGE_PRICE')}}</label>
                 <div class="slider-container">
                     <input type="range" class="range-slider filtro" id="minRange" min="0" max="5000" step="1" value="0">
                     <input type="range" class="range-slider filtro" id="maxRange" min="0" max="5000" step="1" value="5000">
@@ -13,7 +13,7 @@
                 </div>
                 <div class="price-tags d-flex justify-content-between mt-3">
                     <div class="price-box">
-                        <small>Min</small>
+                        <small >Min</small>
                         <input type="number" name="min_price" id="minValue" class="price-input filtro" value="0" min="0" max="5000">
                     </div>
                     <div class="price-box">
@@ -23,9 +23,25 @@
                 </div>
             </div>
 
+            <div class="mb-3">
+                <label class="form-label">{{__('messages.STATUS')}}</label>
+                <div class="form-check">
+                    <input class="form-check-input filtro" type="checkbox" name="estado[]" value="EnVenta" id="enVenta">
+                    <label class="form-check-label" for="enVenta">
+                        En venta
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input filtro" type="checkbox" name="estado[]" value="Vendida" id="vendida">
+                    <label class="form-check-label" for="vendida">
+                        Vendida
+                    </label>
+                </div>
+            </div>
+
             <!-- GENERO-->
             <div class="mb-3">
-                <label class="form-label">Genero</label>
+                <label class="form-label">{{__('messages.FILTER_GENERO')}}</label>
                 <select class="form-select filtro" name="genero">
                     <option value="">Todas</option>
                     @foreach($generoObra as $genero)
@@ -36,7 +52,7 @@
 
             <!-- Técnica -->
             <div class="mb-3">
-                <label class="form-label">Técnica</label>
+                <label class="form-label">{{__('messages.FILTER_TECNICA')}}</label>
                 <select class="form-select filtro" name="tecnica">
                     <option value="">Todas</option>
                     @foreach($tiposObra as $tipo)
@@ -46,7 +62,7 @@
             </div>
 
             <button type="button" id="clear-filters" class="btn btn-outline-secondary w-100 mt-2">
-                Limpiar filtros
+                {{__('messages.CLEAR_FILTER')}}
             </button>
         </aside>
     </form>

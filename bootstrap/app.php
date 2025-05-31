@@ -16,7 +16,9 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin' => \App\Http\Middleware\VerficarAdmin::class,
             'visitas' => \App\Http\Middleware\visitasUsers::class
         ]);
+
+        $middleware->append(\App\Http\Middleware\SetLocale::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
+        //d
     })->create();

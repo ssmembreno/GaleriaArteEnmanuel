@@ -9,8 +9,8 @@
         <div class="row" id="masonry-grid">
             @foreach($obras as $obra)
                 <div class="col-12 col-sm-6 col-md-4 mb-4">
-                    <a href="{{ route('obraDetails', $obra->id) }}" class="d-block">
-                        <img src="{{ asset('storage/' . $obra->imagen) }}"
+                    <a href="{{ localized_route('obraDetails', $obra->id) }}" class="d-block">
+                    <img src="{{ asset('storage/' . $obra->imagen) }}"
                              alt="{{ $obra->nombre }}"
                              class="img-fluid rounded shadow-sm w-100 home-img"
                              title="{{$obra->nombre}}">
@@ -22,8 +22,8 @@
 
     <!-- Botones centrados -->
     <div class="mt-4 d-flex justify-content-center gap-3">
-        <a href="{{ asset('contactUs') }}" class="contact-details btn-biografia">Contacta</a>
-        <a href="{{ asset('ObrasArte') }}" class="contact-details btn-biografia">Ver más arte</a>
+        <a href="{{ localized_url('contactUs') }}" class="contact-details btn-biografia">{{__('messages.BTN_HOME_CONTACT')}}</a>
+        <a href="{{ localized_url('ObrasArte') }}" class="contact-details btn-biografia">{{__('messages.BTN_HOME_ART')}}</a>
     </div>
 </div>
 

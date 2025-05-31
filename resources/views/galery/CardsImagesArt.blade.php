@@ -4,7 +4,7 @@
         @if($obras->isEmpty())
             <div class="no-results-container text-center position-relative" style="height: 800px;">
                 <h3 class="title-obra-details title-comments position-absolute top-50 start-50 translate-middle fw-bold" >
-                    ¡Lo sentimos no hemos podido encontrar obras con estos filtros!
+                    {{__('messages.ERROR_FILTER')}}
                 </h3>
             </div>
         @else
@@ -13,7 +13,7 @@
             @endphp
             @foreach($obras as $obra)
                 <div class="col-12 col-sm-6 col-lg-4">
-                    <a href="{{ route('obraDetails', $obra->id) }}" class="text-decoration-none text-dark d-block h-100">
+                    <a href="{{localized_route('obraDetails', $obra->id) }}" class="text-decoration-none text-dark d-block h-100">
                         <div class="position-relative obra-hover-group">
                             <img src="{{ asset('storage/' . $obra->imagen) }}"
                                  alt="Obra {{ $obra->nombre }}"
@@ -35,7 +35,7 @@
                                 </button>
                             </div>
                         </div>
-                    <a href="{{ route('obraDetails', $obra->id) }}" class="text-decoration-none text-dark d-block h-100">
+                    <a href="{{ localized_route('obraDetails', $obra->id) }}" class="text-decoration-none text-dark d-block h-100">
                         <div class="mt-2 px-1">
                             <div class="text-uppercase" style="font-size: 0.85rem; font-weight: bold">
                                 "{{ strtoupper($obra->nombre) }}"

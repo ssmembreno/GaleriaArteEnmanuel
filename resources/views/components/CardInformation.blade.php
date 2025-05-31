@@ -6,13 +6,12 @@
             </div>
             <div class="nota-contenido">
                 <h2 class="nota-titulo">Enmanuel Membreño</h2>
-                <p class="nota-subtitulo">ARTISTA HONDUREÑO</p>
+                <p class="nota-subtitulo">{{__('messages.CARD_ARTIST')}}</p>
                 <div class="nota-separador"></div>
                 <p class="nota-descripcion">
-                    <strong>Artista</strong> hondureño con más de 30 años
-                    de trayectoria, especializado en el realismo. A lo largo de su carrera ha plasmado con maestría paisajes, bodegones y retratos, destacando por su atención al detalle y sensibilidad artística.
+                    <strong>{{__('messages.CARD_ARTIST_STRONG')}}</strong> {{__('messages.CARD_BIO')}}
                 </p>
-                <a href="{{asset('/aboutUs')}}" class="nota-btn">Biografia</a>
+                <a href="{{localized_url('aboutUs')}}" class="nota-btn">{{__('messages.CARD_BTN')}}</a>
             </div>
         </div>
     </div>

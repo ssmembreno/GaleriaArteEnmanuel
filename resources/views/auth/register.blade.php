@@ -6,12 +6,12 @@
             <div class="login-logo">
                 <img src="{{ asset('img/logo.png') }}" alt="Logo">
             </div>
-            <div class="login-title">¡Bienvenido!</div>
-            <div class="login-subtitle">Bienvenido de nuevo, introduce tus datos para continuar</div>
+            <div class="login-title">{{ __('messages.WELCOME_LOG') }}</div>
+            <div class="login-subtitle">{{ __('messages.WELCOME_BACK_LOG') }}</div>
 
             <div class="toggle-buttons mb-4">
-                <button id="btn-login" class="active" onclick="toggleForm('login')" type="button">Iniciar sesión</button>
-                <button id="btn-register" onclick="toggleForm('register')" type="button">Crear cuenta</button>
+                <button id="btn-login" class="active" onclick="toggleForm('login')" type="button">{{ __('messages.LOGIN_BUTTON_LOG') }}</button>
+                <button id="btn-register" onclick="toggleForm('register')" type="button">{{ __('messages.REGISTER_BUTTON_LOG') }}</button>
             </div>
 
             <!-- Login Form -->
@@ -19,13 +19,13 @@
                 @csrf
                 <div class="input-group-custom">
                     <i class="fas fa-envelope"></i>
-                    <input name="email" type="email" class="form-control-custom" placeholder="Correo electrónico" required autocomplete="off">
+                    <input name="email" type="email" class="form-control-custom" placeholder="{{ __('messages.EMAIL_PLACEHOLDER_LOG') }}" required autocomplete="off">
                 </div>
                 <div class="input-group-custom">
                     <i class="fas fa-lock"></i>
-                    <input name="password" type="password" class="form-control-custom" placeholder="Contraseña" required autocomplete="off">
+                    <input name="password" type="password" class="form-control-custom" placeholder="{{ __('messages.PASSWORD_PLACEHOLDER_LOG') }}" required autocomplete="off">
                 </div>
-                <button type="submit" class="btn-continue mt-2">Continuar</button>
+                <button type="submit" class="btn-continue mt-2">{{ __('messages.CONTINUE_BUTTON_LOG') }}</button>
             </form>
 
             <!-- Register Form -->
@@ -33,39 +33,36 @@
                 @csrf
                 <div class="input-group-custom">
                     <i class="fas fa-user"></i>
-                    <input name="name" type="text" class="form-control-custom" placeholder="Nombre" autocomplete="off">
+                    <input name="name" type="text" class="form-control-custom" placeholder="{{ __('messages.NAME_PLACEHOLDER_LOG') }}" autocomplete="off">
                 </div>
                 <div class="input-group-custom">
                     <i class="fas fa-user"></i>
-                    <input name="apellido" type="text" class="form-control-custom" placeholder="Apellido" autocomplete="off">
+                    <input name="apellido" type="text" class="form-control-custom" placeholder="{{ __('messages.LASTNAME_PLACEHOLDER_LOG') }}" autocomplete="off">
                 </div>
                 <div class="input-group-custom">
                     <i class="fas fa-envelope"></i>
-                    <input name="email" type="email" class="form-control-custom" placeholder="Correo electrónico" autocomplete="off">
+                    <input name="email" type="email" class="form-control-custom" placeholder="{{ __('messages.EMAIL_PLACEHOLDER_LOG') }}" autocomplete="off">
                 </div>
                 <div class="input-group-custom">
                     <i class="fas fa-lock"></i>
-                    <input name="password" type="password" class="form-control-custom" placeholder="Contraseña" autocomplete="off">
+                    <input name="password" type="password" class="form-control-custom" placeholder="{{ __('messages.PASSWORD_PLACEHOLDER_LOG') }}" autocomplete="off">
                 </div>
                 <div class="input-group-custom">
                     <i class="fas fa-lock"></i>
-                    <input name="password_confirmation" type="password" class="form-control-custom" placeholder="Confirmar contraseña" autocomplete="off">
+                    <input name="password_confirmation" type="password" class="form-control-custom" placeholder="{{ __('messages.CONFIRM_PASSWORD_PLACEHOLDER_LOG') }}" autocomplete="off">
                 </div>
-                <button type="submit" class="btn-continue mt-2">Regístrate</button>
+                <button type="submit" class="btn-continue mt-2">{{ __('messages.REGISTER_BUTTON_SUBMIT_LOG') }}</button>
             </form>
 
-            <div class="divider"><span>O continúa con</span></div>
+            <div class="divider"><span>{{ __('messages.DIVIDER_TEXT_LOG') }}</span></div>
 
             <div class="social-icons">
-                <a href="http://127.0.0.1:8000/auth/google/redirect"><img src="{{asset('img/icons/google.png')}}" alt="Google"></a>
+                <a href="http://127.0.0.1:8000/auth/google/redirect"><img src="{{asset('img/icons/google.png')}}" alt="{{ __('messages.GOOGLE_ALT_LOG') }}"></a>
             </div>
 
             <div class="footer-note">
-                Únete a millones de inversores inteligentes que confían en nosotros para gestionar sus finanzas. Inicia sesión o regístrate para acceder a tu panel personalizado.
+                {{ __('messages.FOOTER_NOTE_LOG') }}
             </div>
-        </div>
-    </div>
-
 @endsection
 
 <script>

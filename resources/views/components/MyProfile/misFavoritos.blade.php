@@ -1,13 +1,13 @@
 <div class="mb-4">
     <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#collapseFavoritos" aria-expanded="false" aria-controls="collapseFavoritos">
-        <h2 class="title-obra-details">Mis Favoritos</h2>
+        <h2 class="title-obra-details">{{ __('messages.MY_FAVORITES_MDATA') }}</h2>
         <img src="{{ asset('img/icons/arrowBottom.png') }}" alt="Abrir" class="collapse-arrow">
     </div>
     <hr style="width: 100%">
     <div class="collapse" id="collapseFavoritos">
         <div class="favoritos-section mt-3">
             @if($favoritos->isEmpty())
-                <p class="text-muted">No tienes obras en favoritos aún.</p>
+                <p class="text-muted">{{ __('messages.NO_FAVORITES_MDATA') }}</p>
             @else
                 <div class="masonry-grid" data-masonry='{"percentPosition": true }'>
                     @foreach($favoritos as $obra)

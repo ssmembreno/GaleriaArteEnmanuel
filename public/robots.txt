@@ -8,7 +8,8 @@ Disallow: /cart
 Disallow: /checkout
 Disallow: /user
 Disallow: /api/
+Disallow: /*?lang=*
 
 Allow: /
 
-Sitemap: https://www.tu-dominio.com/sitemap.xml
+Sitemap: https://www.galeriaenmanuel.com/sitemap.xml

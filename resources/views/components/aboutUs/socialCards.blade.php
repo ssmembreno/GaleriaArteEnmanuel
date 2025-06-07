@@ -23,7 +23,7 @@
                         <img src="{{ asset('img/icons/instagram.png')}}" alt="Instagram" class="mb-3" style="width: 60px;">
                         <h6>{{__('messages.FOLLOW_ON')}}Instagram</h6>
                     </div>
-                    <a href="https://www.instagram.com/membrenobflores/?hl=es-la" target="_blank" class="btn contact-details mt-3">{{__('messages.BTN_MEDIA_ABOUT')}}</a>
+                    <a href="https://www.instagram.com/galeria.enmanuel/?hl=es-la" target="_blank" class="btn contact-details mt-3">{{__('messages.BTN_MEDIA_ABOUT')}}</a>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
                         <img src="{{ asset('img/icons/tiktok.png') }}" alt="TikTok" class="mb-3" style="width: 60px;">
                         <h6>{{__('messages.FOLLOW_ON')}}TikTok</h6>
                     </div>
-                    <a href="https://www.tiktok.com/@galeriaarteenmanuel" target="_blank" class="btn contact-details mt-3">{{__('messages.BTN_MEDIA_ABOUT')}}</a>
+                    <a href="https://www.tiktok.com/@galeria.enmanuel" target="_blank" class="btn contact-details mt-3">{{__('messages.BTN_MEDIA_ABOUT')}}</a>
                 </div>
             </div>
         </div>

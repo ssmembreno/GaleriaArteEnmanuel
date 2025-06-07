@@ -38,7 +38,7 @@
                             @foreach($obras as $obra)
                                 <tr>
                                     <td>
-                                        <img src="{{asset('storage/'.$obra->imagen)}}" alt="{{$obra->nombre}}" height="130px" width="130px" style="display: flex; margin:0px auto; justify-content: center; align-items: center">
+                                        <img src="{{asset($obra->imagen)}}" alt="{{$obra->nombre}}" height="130px" width="130px" style="display: flex; margin:0px auto; justify-content: center; align-items: center">
                                     </td>
                                     <td>{{ $obra->id }}</td>
                                     <td>{{ $obra->nombre }}</td>
@@ -46,7 +46,12 @@
                                     <td>{{ $obra->tipoObra->nombre ?? 'Sin tipo' }}</td>
                                     <td>{{ $obra->precio }} $</td>
                                     <td>{{ $obra->tamaño }}</td>
-                                    <td>{{ $obra->estado }}</td>
+                                    @if ($obra->estado == "EnVenta")
+                                        <td style="color: green; font-weight: 500;">{{ $obra->estado }}</td>
+                                    @else
+                                        <td style="color: red; font-weight: 500;">{{ $obra->estado }}</td>
+                                    @endif
+                                    
                                     <td class="mt-3">
                                         <a href="{{ action([App\Http\Controllers\Backend\obraController::class, 'edit'], $obra->id) }}" class="btn btn-warning btn-icon-split">
                                             <span class="text"><i class="fa-solid fa-pen"></i></span>

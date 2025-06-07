@@ -37,7 +37,7 @@
         </div>
         <div class="row mb-2">
             <div class="col-6 fw-bold"> {{__('messages.DIMENSIONES')}}:</div>
-            <div class="col-6">{{ $obra->tamaño }} cm</div>
+            <div class="col-6">{{ $obra->tamaño }}</div>
         </div>
         <div class="row mb-2">
             <div class="col-6 fw-bold"> {{__('messages.TECNICA')}}:</div>

@@ -52,8 +52,8 @@
                 <h6 class="fw-semibold">{{__('messages.SOCIAL_FOOTER')}}</h6>
                 <div class="icons-social d-flex flex-wrap gap-2 mt-2">
                     <a href="https://www.facebook.com/p/Galer%C3%ADa-de-Arte-Enmanuel-Membre%C3%B1o-100025235529748/?locale=es_LA" target="_blank"><img src="{{ asset('img/icons/facebook.png') }}" alt="Facebook" width="44"></a>
-                    <a href="https://www.instagram.com/membrenobflores/?hl=es-la" target="_blank"><img src="{{ asset('img/icons/instagram.png') }}" alt="Instagram" width="44"></a>
-                    <a href="https://www.tiktok.com/@galeriaarteenmanuel" target="_blank"><img src="{{ asset('img/icons/tiktok.png') }}" alt="TikTok" width="44"></a>
+                    <a href="https://www.instagram.com/galeria.enmanuel/?hl=es-la" target="_blank"><img src="{{ asset('img/icons/instagram.png') }}" alt="Instagram" width="44"></a>
+                    <a href="https://www.tiktok.com/@galeria.enmanuel" target="_blank"><img src="{{ asset('img/icons/tiktok.png') }}" alt="TikTok" width="44"></a>
                     <a href="https://wa.me/+50496432644" target="_blank"><img src="{{ asset('img/icons/whatsapp.png') }}" alt="WhatsApp" width="44"></a>
                 </div>
             </div>

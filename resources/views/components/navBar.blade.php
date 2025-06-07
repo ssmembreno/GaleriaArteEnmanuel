@@ -28,7 +28,7 @@
                 @foreach(config('app.available_locales') as $lang => $locale)
                     <a href="?lang={{ $locale }}">
                         @if($locale === 'es')
-                            <img src="{{ asset('img/icons/espana.png') }}" alt="Español" title="Español" style="width: 30px;">
+                            <img src="{{ asset('img/icons/flag.png') }}" alt="Español" title="Español" style="width: 30px;">
                         @elseif($locale === 'en')
                             <img src="{{ asset('img/icons/estados-unidos.png') }}" alt="English" title="English" style="width: 30px;">
                         @endif

@@ -3,31 +3,42 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Galería de Arte de Enmanuel Membreño</title>
-    <link rel="icon" href="{{asset('img/logo.png')}}">
 
-    <!-- Descripción SEO -->
-    <meta name="description" content="Explora la galería de arte de Enmanuel Membreño, un talentoso pintor hondureño. Descubre obras únicas, califícalas, deja comentarios y entérate de próximos eventos artísticos.">
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/png">
 
-    <!-- Palabras clave -->
-    <meta name="keywords" content="galería de arte, arte hondureño, pinturas, cuadros, artista hondureño, eventos de arte, exposición de arte, obras de arte online">
-
-    <!-- Robots para indexación -->
+    <!-- SEO Básico -->
+    <meta name="description" content="Explora la galería de arte de Enmanuel Membreño, un talentoso pintor hondureño. Descubre sus obras, califícalas, deja comentarios y entérate de próximos eventos artísticos.">
+    <meta name="keywords" content="Enmanuel Membreño, galería de arte, arte hondureño, pinturas, cuadros, artista hondureño, eventos de arte, exposición, obras online, arte moderno, arte contemporáneo">
     <meta name="robots" content="index, follow">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="" />
+    <link rel="canonical" href="{{ url()->current() }}" />
 
-    <!-- CSRF Token para Laravel -->
+    <!-- Idioma alternativo (hreflang) -->
+    <link rel="alternate" hreflang="es" href="{{ url()->current() }}" />
+    <link rel="alternate" hreflang="en" href="{{ url()->current() }}?lang=en" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Galería de Arte de Enmanuel Membreño" />
+    <meta property="og:description" content="Descubre obras de arte originales del pintor hondureño Enmanuel Membreño." />
+    <meta property="og:image" content="{{ asset('img/logo.png') }}" />
+    <meta property="og:url" content="{{ url()->current() }}" />
+    <meta property="og:site_name" content="Galería Enmanuel" />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Galería de Arte de Enmanuel Membreño">
+    <meta name="twitter:description" content="Descubre obras de arte del pintor hondureño Enmanuel Membreño.">
+    <meta name="twitter:image" content="{{ asset('img/logo.png') }}">
+
+    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <!--more SEO-->
-    <meta property="og:title" content="Galería de Arte de Enmanuel Membreño">
-    <meta property="og:description" content="Descubre el arte original de un pintor hondureño. Visualiza, comenta y sigue sus eventos.">
-    <meta property="og:url" content="">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="es_ES">
 
     <!-- Fuentes y estilos -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -68,8 +79,12 @@
     <!-- HEADER -->
     <!--Librerias-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+
     <!--Masonry IMAGES-->
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
